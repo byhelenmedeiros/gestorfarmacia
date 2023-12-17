@@ -22,16 +22,16 @@ public class MenuController {
     }
     
     private void mostrarMenuPrincipal() {
-        System.out.println("---- Menu de Administração ----");
+        System.out.println("---- Menu de Administracao ----");
         System.out.println("1. Registar Venda");
         // ... outras opções do menu
         
-        System.out.println("---- Menu Estatísticas ----");
-        System.out.println("8. Obter o número total de vendas");
+        System.out.println("---- Menu Estatisticas ----");
+        System.out.println("8. Obter o numero total de vendas");
         // ... outras opções do menu
         
         System.out.println("0. Sair");
-        System.out.print("Escolha uma opção: ");
+        System.out.print("Escolha uma opcao: ");
     }
     
     private int receberOpcao() {
