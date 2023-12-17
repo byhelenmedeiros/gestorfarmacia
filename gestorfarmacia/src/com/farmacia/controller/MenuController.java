@@ -26,7 +26,7 @@ public class MenuController {
         System.out.println("1. Registar Venda");
         // ... outras opções do menu
         
-        System.out.println("---- Menu Estatisticas ----");
+        System.out.println("---- Relatório de Vendas ----");
         System.out.println("8. Obter o numero total de vendas");
         // ... outras opções do menu
         
@@ -53,7 +53,7 @@ public class MenuController {
                 // Chame o método para obter o número total de vendas
                 break;
             case 0:
-                System.out.println("Saindo...");
+                System.out.println("Saindo.");
                 break;
             default:
                 System.out.println("Opção inválida. Escolha novamente.");
