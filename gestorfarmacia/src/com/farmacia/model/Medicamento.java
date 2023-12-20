@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
     public class GerirMedicamentos{
-        private List<Medicamento> ListaMedicamentos;
+        private List<Medicamento> listaMedicamentos;
         
         public GerirMedicamentos(){
             this.listaMedicamentos = new ArrayList<>();
@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 
     public void cadastroMedicamento(){
-        Scanner Teclado = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
                 boolean continuarCadastro = true;
 
          while (continuarCadastro) {
@@ -41,7 +41,7 @@ import java.util.Scanner;
                 case 1:
                     continuarCadastro = false;
                     break;
-                case 2;
+                case 2:
                     continuarCadastro = true;
                     break 
                 case 3:
@@ -66,8 +66,4 @@ import java.util.Scanner;
         }
     }
 
-
-    public void cadastroMedicamento (){
-        
-    }
 }
