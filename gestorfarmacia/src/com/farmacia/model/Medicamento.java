@@ -4,18 +4,23 @@ public class Medicamento {
     private double preco;
     private String descricao;
     private String tipo;
+    private String stock;
 
 
 
-    public Medicamento(String nome, int quantidade, double preco, String descricao, String tipo) {
-        this.nome = nome;
-        this.quantidade = quantidade;
-        this.preco = preco;
-        this.descricao = descricao;
-        this.tipo = tipo;
-        this.stock = stock;
+    public class GerirMedicamentos{
+        private List<Medicamento> ListaMedicamentos;
+        
+        public GerirMedicamentos(){
+            this.listaMedicamentos = new ArrayList<>();
+        
+        }    
+
+
+    public void cadastroMedicamento(){
+        Scanner 
+
     }
-
 
     public void vender(int quantidadeAVender) {
         if (quantidadeAVender <= quantidade && quantidadeAVender > 0) {
@@ -25,6 +30,7 @@ public class Medicamento {
             System.out.println("Quantidade inválida para venda.");
         }
     }
+
 
     public void cadastroMedicamento (){
         
