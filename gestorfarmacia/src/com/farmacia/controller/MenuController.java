@@ -24,7 +24,7 @@ public class MenuController {
     private void mostrarMenuPrincipal() {
         System.out.println("---- Menu de Administracao ----");
         System.out.println("1. Registar Venda");
-        System.out.println("2. Registrar novo Medicamento")
+        System.out.println("2. Cadastrar novo Medicamento")
         
         System.out.println("---- Relatório de Vendas ----");
         System.out.println("8. Obter o numero total de vendas");

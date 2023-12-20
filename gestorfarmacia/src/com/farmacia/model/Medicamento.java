@@ -1,10 +1,12 @@
 public class Medicamento {
     private String nome;
     private int quantidade;
+    private double preco;
 
     public Medicamento(String nome, int quantidade) {
         this.nome = nome;
         this.quantidade = quantidade;
+        this.preco = preco;
     }
 
 
@@ -15,5 +17,9 @@ public class Medicamento {
         } else {
             System.out.println("Quantidade inválida para venda.");
         }
+    }
+
+    public void cadastroMedicamento (){
+        
     }
 }
