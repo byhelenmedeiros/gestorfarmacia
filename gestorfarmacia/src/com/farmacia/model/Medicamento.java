@@ -1,12 +1,6 @@
-public class Medicamento {
-    private String nome;
-    private int quantidade;
-    private double preco;
-    private String descricao;
-    private String tipo;
-    private String stock;
-
-
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
     public class GerirMedicamentos{
         private List<Medicamento> ListaMedicamentos;
@@ -18,7 +12,20 @@ public class Medicamento {
 
 
     public void cadastroMedicamento(){
-        Scanner 
+        Scanner Teclado = new Scanner(System.in);
+
+            System.out.println("------Cadastro de novos medicamentos------");
+            System.out.println("Nome do Medicamento: ");
+                String nome = Scanner.nextLine();
+            System.out.println("Quantidade: ")
+                int quantidade = Scanner.nextLine();
+            System.out.println("Descrição do medicamento: ")
+                String descricao = Scanner.nextLine();
+            System.out.println("Preço: ");
+                double preco = Scanner.nextLine();  
+            System.out.println("Tipo de medicamento: ");
+                String tipo = Scanner.nextLine();
+
 
     }
 
