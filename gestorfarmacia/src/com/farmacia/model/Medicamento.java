@@ -2,11 +2,18 @@ public class Medicamento {
     private String nome;
     private int quantidade;
     private double preco;
+    private String descricao;
+    private String tipo;
 
-    public Medicamento(String nome, int quantidade) {
+
+
+    public Medicamento(String nome, int quantidade, double preco, String descricao, String tipo) {
         this.nome = nome;
         this.quantidade = quantidade;
         this.preco = preco;
+        this.descricao = descricao;
+        this.tipo = tipo;
+        this.stock = stock;
     }
 
 
