@@ -2,68 +2,86 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-    public class GerirMedicamentos{
-        private List<Medicamento> listaMedicamentos;
-        
-        public GerirMedicamentos(){
-            this.listaMedicamentos = new ArrayList<>();
-        
-        }    
+public class GerirMedicamentos {
+    private List<Medicamento> listaMedicamentos;
+    private Scanner scanner;
 
+    public GerirMedicamentos() {
+        this.listaMedicamentos = new ArrayList<>();
+        this.scanner = new Scanner(System.in);
+    }
 
-    public void cadastroMedicamento(){
-        Scanner scanner = new Scanner(System.in);
-                boolean continuarCadastro = true;
+    public void cadastroMedicamento() {
+        boolean continuarCadastro = true;
 
-         while (continuarCadastro) {
+        while (continuarCadastro) {
             System.out.println("------Cadastro de novos medicamentos------");
             System.out.println("Nome do Medicamento: ");
-                String nome = Scanner.nextLine();
-            System.out.println("Quantidade: ")
-                int quantidade = Scanner.nextLine();
-            System.out.println("Descrição do medicamento: ")
-                String descricao = Scanner.nextLine();
+            String nome = scanner.nextLine();
+            System.out.println("Quantidade: ");
+            int quantidade = Integer.parseInt(scanner.nextLine());
+            System.out.println("Descrição do medicamento: ");
+            String descricao = scanner.nextLine();
             System.out.println("Preço: ");
-                double preco = Scanner.nextLine();  
+            double preco = Double.parseDouble(scanner.nextLine());
             System.out.println("Tipo de medicamento: ");
-                String tipo = Scanner.nextLine();
+            String tipo = scanner.nextLine();
 
-        Medicamento novoMedicamento = new Medicamento(nome, quantidade, descricao, preco, tipo);
-        listaMedicamentos.add(novoMedicamento);
-                System.out.println("Medicamento cadastrado com sucesso! Pretende cadastrar novo medicamento ?");
-                System.out.println("1 - Não");
-                System.out.println("2 - Sim, continuar cadastro de medicamentos");
-                System.out.println("3 - Voltar para menu");
-        
-        int escolha = scanner.nextLine();
+            Medicamento novoMedicamento = new Medicamento(nome, quantidade, descricao, preco, tipo);
+            listaMedicamentos.add(novoMedicamento);
 
-            switch(escolha){
+            System.out.println("Medicamento cadastrado com sucesso! Pretende cadastrar novo medicamento ?");
+            System.out.println("1 - Não");
+            System.out.println("2 - Sim, continuar cadastro de medicamentos");
+            System.out.println("3 - Voltar para menu principal");
+
+            int escolha = Integer.parseInt(scanner.nextLine());
+
+            switch (escolha) {
                 case 1:
                     continuarCadastro = false;
                     break;
                 case 2:
                     continuarCadastro = true;
-                    break 
+                    break;
                 case 3:
-                    mostrarMenuPrincipal()  
+                    mostrarMenuPrincipal();
                     break;
                 default:
-                    System.out.println("Escolha inválida, encerrando cadasntro de medicamentos!");
+                    System.out.println("Escolha inválida, encerrando cadastro de medicamentos!");
                     continuarCadastro = false;
                     break;
-
             }
-
-        scanner.close();
+        }
     }
-}
-    public void vender(int quantidadeAVender) {
-        if (quantidadeAVender <= quantidade && quantidadeAVender > 0) {
-            quantidade -= quantidadeAVender;
-            System.out.println(quantidadeAVender + " unidades de " + nome + " vendidas.");
+
+    public void vender(Medicamento medicamento, int quantidadeAVender) {
+        if (quantidadeAVender <= medicamento.getQuantidade() && quantidadeAVender > 0) {
+            medicamento.setQuantidade(medicamento.getQuantidade() - quantidadeAVender);
+            System.out.println(quantidadeAVender + " unidades de " + medicamento.getNome() + " vendidas.");
         } else {
             System.out.println("Quantidade inválida para venda.");
         }
     }
 
+    private void mostrarMenuPrincipal() {
+       
+    }
+
+   private void mostrarTodosMedicamentos() {
+    if (listaDeMedicamentos.isEmpty()) {
+        System.out.println("Não há medicamentos cadastrados.");
+    } else {
+        System.out.println("Detalhes de todos os medicamentos:");
+        for (Medicamento medicamento : listaDeMedicamentos) {
+            System.out.println("Nome do medicamento: " + medicamento.getNome());
+            System.out.println("Quantidade em stock: " + medicamento.getQuantidade());
+            System.out.println("Preço: " + medicamento.getPreco());
+            System.out.println("Descriçao do medicamento: " + medicamento.getDescricao());
+            System.out.println("Tipo de medicamento: " + medicamento.getTipo());
+
+            System.out.println("---------------");
+        }
+    }
+}
 }

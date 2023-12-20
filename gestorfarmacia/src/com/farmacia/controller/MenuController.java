@@ -21,15 +21,58 @@ public class MenuController {
         scanner.close();
     }
     
+    public void GerirMedicamentos() {
+        int opcao;
+
+        do {
+            mostrarSubMenuMedicamentos();
+            opcao = receberOpcao();
+            realizarAcaoMedicamentos(opcao);
+        } while (opcao != 0);
+    }
+
+               private void mostrarSubMenuMedicamentos() {
+        System.out.println("---- GERIR MEDICAMENTOS ----");
+        System.out.println("1. Cadastrar Novo Medicamento");
+        System.out.println("2. Mostrar Todos os Medicamentos");
+        System.out.println("3. Vender Medicamento");
+        System.out.println("0. Voltar para o Menu Principal");
+        System.out.print("Escolha uma opcao: ");
+    }
+
+       private void realizarAcaoMedicamentos(int opcao) {
+            switch (opcao) {
+                case 1:
+                    System.out.println("Você escolheu Cadastrar Novo Medicamento.");
+                    cadastroMedicamento(); 
+                    break;
+                case 2:
+                    System.out.println("Você escolheu Mostrar Todos os Medicamentos:");
+                    mostrarTodosMedicamentos();
+                    break;
+                case 3:
+                    System.out.println("Você escolheu Vender Medicamento.");
+                    venderMedicamento();
+                    break;
+                case 0:
+                    System.out.println("Voltando para o Menu Principal.");
+                     exibirMenuPrincipal();
+                    break;
+                default:
+                    System.out.println("Opção inválida. Escolha novamente.");
+            }
+}
+
+
+
     private void mostrarMenuPrincipal() {
         System.out.println("---- Menu de Administracao ----");
         System.out.println("1. Registar Venda");
-        System.out.println("2. Cadastrar novo Medicamento");
+        System.out.println("2. Gerir Medicamentos");
         
         System.out.println("---- Relatório de Vendas ----");
         System.out.println("8. Obter o numero total de vendas");
-        System.out.println("9. Mostrar todos os Medicamento");
-        // ... outras opções do menu
+        System.out.println("9. Mostrar todos os Medicamento")
         
         System.out.println("0. Sair");
         System.out.print("Escolha uma opcao: ");
@@ -47,17 +90,21 @@ public class MenuController {
         switch (opcao) {
             case 1:
                 System.out.println("Você escolheu Registrar Venda.");
-                // Chame o método para registrar a venda
                 break;
+            case 2: 
+                System.out.println("------ GESTAO DE MEDICAMENTOS------");  
+                    mostrarSubMenuMedicamentos(); 
             case 8:
                 System.out.println("Você escolheu Obter o número total de vendas.");
-                // Chame o método para obter o número total de vendas
                 break;
             case 0:
                 System.out.println("Saindo.");
                 break;
+           
+
             default:
                 System.out.println("Opção inválida. Escolha novamente.");
+                   
         }
     }
 }
