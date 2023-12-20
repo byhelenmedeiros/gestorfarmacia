@@ -17,15 +17,15 @@ public class GerirMedicamentos {
         while (continuarCadastro) {
             System.out.println("------Cadastro de novos medicamentos------");
             System.out.println("Nome do Medicamento: ");
-            String nome = scanner.nextLine();
+                String nome = scanner.nextLine();
             System.out.println("Quantidade: ");
-            int quantidade = Integer.parseInt(scanner.nextLine());
+                int quantidade = Integer.parseInt(scanner.nextLine());
             System.out.println("Descrição do medicamento: ");
-            String descricao = scanner.nextLine();
+                String descricao = scanner.nextLine();
             System.out.println("Preço: ");
-            double preco = Double.parseDouble(scanner.nextLine());
+                double preco = Double.parseDouble(scanner.nextLine());
             System.out.println("Tipo de medicamento: ");
-            String tipo = scanner.nextLine();
+                String tipo = scanner.nextLine();
 
             Medicamento novoMedicamento = new Medicamento(nome, quantidade, descricao, preco, tipo);
             listaMedicamentos.add(novoMedicamento);
