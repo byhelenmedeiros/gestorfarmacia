@@ -75,16 +75,17 @@ public class Medicamento {
             System.out.println("Atenção: O medicamento está prestes a vencer em menos de 24 horas!");
             System.out.println("Deseja remover o medicamento do estoque? (Sim/Não)");
 
-            Scanner scanner = new Scanner(System.in);
-            String resposta = scanner.nextLine();
+            try (Scanner scanner = new Scanner(System.in)) {
+                String resposta = scanner.nextLine();
 
-            if (resposta.equalsIgnoreCase("Sim")) {
-                System.out.println("Medicamento removido do estoque.");
-            } else if (resposta.equalsIgnoreCase("Não")) {
-                System.out.println("Medicamento mantido no estoque.");
-            } else {
-                System.out.println("Opção inválida.");
-                // Lógica para lidar com uma resposta inválida
+                if (resposta.equalsIgnoreCase("Sim")) {
+                    System.out.println("Medicamento removido do estoque.");
+                } else if (resposta.equalsIgnoreCase("Não")) {
+                    System.out.println("Medicamento mantido no estoque.");
+                } else {
+                    System.out.println("Opção inválida.");
+                    // Lógica para lidar com uma resposta inválida
+                }
             }
         } else if (diasAteVencimento < 0) {
             System.out.println("Atenção: O medicamento está vencido!");
