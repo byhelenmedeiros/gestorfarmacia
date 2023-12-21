@@ -69,19 +69,45 @@ public class MenuController {
             this.dataValidade = dataValidade;
         }
 
-        public void validarDataDeValidade() {
-            LocalDate hoje = LocalDate.now();
-            long diasAteVencimento = ChronoUnit.DAYS.between(hoje, dataValidade);
+           public void validarDataDeValidade() {
+        LocalDate hoje = LocalDate.now();
+        long diasAteVencimento = ChronoUnit.DAYS.between(hoje, dataValidade);
 
-            if (diasAteVencimento <= 1 && diasAteVencimento >= 0) {
-                System.out.println("Atenção: O medicamento está prestes a vencer em menos de 24 horas!");
-                // Aqui você pode adicionar código para notificar o usuário de alguma forma (enviar um e-mail, exibir uma mensagem, etc.)
-            } else if (diasAteVencimento < 0) {
-                System.out.println("Atenção: O medicamento está vencido!");
-                // Código para lidar com medicamento vencido, se necessário
+        if (diasAteVencimento <= 1 && diasAteVencimento >= 0) {
+            System.out.println("Atenção: O medicamento está prestes a vencer em menos de 24 horas!");
+            System.out.println("Deseja remover o medicamento do estoque? (Sim/Não)");
+
+            Scanner scanner = new Scanner(System.in);
+            String resposta = scanner.nextLine();
+
+            if (resposta.equalsIgnoreCase("Sim")) {
+                System.out.println("Medicamento removido do estoque.");
+            } else if (resposta.equalsIgnoreCase("Não")) {
+                System.out.println("Medicamento mantido no estoque.");
             } else {
-                System.out.println("A data de validade do medicamento está OK.");
+                System.out.println("Opção inválida.");
+                // Lógica para lidar com uma resposta inválida
             }
+        } else if (diasAteVencimento < 0) {
+            System.out.println("Atenção: O medicamento está vencido!");
+            System.out.println("Deseja remover o medicamento do estoque? (Sim/Não)");
+
+            Scanner scanner = new Scanner(System.in);
+            String resposta = scanner.nextLine();
+
+            if (resposta.equalsIgnoreCase("Sim")) {
+                // Remover o medicamento do estoque
+                System.out.println("Medicamento removido do estoque.");
+                //remoção do estoque
+            } else if (resposta.equalsIgnoreCase("Não")) {
+                System.out.println("Medicamento mantido no estoque.");
+                // Você pode adicionar outras ações caso o usuário decida manter o medicamento no estoque
+            } else {
+                System.out.println("Opção inválida.");
+                // opcap resposta inválida
+            }
+        } else {
+            System.out.println("A data de validade do medicamento está OK.");
         }
     }
 
