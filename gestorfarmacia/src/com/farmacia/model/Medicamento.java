@@ -5,6 +5,24 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+
+public class Medicamento {
+    private String nome;
+    private int quantidade;
+    private LocalDate dataValidade;
+    private String descricao;
+    private double preco;
+    private String tipo;
+
+    public Medicamento(String nome, int quantidade, LocalDate dataValidade, String descricao, double preco, String tipo) {
+        this.nome = nome;
+        this.quantidade = quantidade;
+        this.dataValidade = dataValidade;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.tipo = tipo;
+    }
+
 public class GerirMedicamentos {
     private List<Medicamento> listaMedicamentos;
     private Scanner scanner;
@@ -141,4 +159,5 @@ public class GerirMedicamentos {
     }
 
 
+    }
 }
