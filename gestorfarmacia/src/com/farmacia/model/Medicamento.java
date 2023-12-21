@@ -90,18 +90,19 @@ public class Medicamento {
             System.out.println("Atenção: O medicamento está vencido!");
             System.out.println("Deseja remover o medicamento do estoque? (Sim/Não)");
 
-            Scanner scanner = new Scanner(System.in);
-            String resposta = scanner.nextLine();
+            try (Scanner scanner = new Scanner(System.in)) {
+                String resposta = scanner.nextLine();
 
-            if (resposta.equalsIgnoreCase("Sim")) {
-                // Remover o medicamento do estoque
-                System.out.println("Medicamento removido do estoque.");
-                //remoção do estoque
-            } else if (resposta.equalsIgnoreCase("Não")) {
-                System.out.println("Medicamento mantido no estoque.");
-            } else {
-                System.out.println("Opção inválida.");
-                // opcap resposta inválida
+                if (resposta.equalsIgnoreCase("Sim")) {
+                    // Remover o medicamento do estoque
+                    System.out.println("Medicamento removido do estoque.");
+                    //remoção do estoque
+                } else if (resposta.equalsIgnoreCase("Não")) {
+                    System.out.println("Medicamento mantido no estoque.");
+                } else {
+                    System.out.println("Opção inválida.");
+                    // opcap resposta inválida
+                }
             }
         } else {
             System.out.println("A data de validade do medicamento está OK.");
