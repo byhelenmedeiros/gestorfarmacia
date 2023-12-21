@@ -128,7 +128,6 @@ public class GerirMedicamentos {
                 //remoção do estoque
             } else if (resposta.equalsIgnoreCase("Não")) {
                 System.out.println("Medicamento mantido no estoque.");
-                // Você pode adicionar outras ações caso o usuário decida manter o medicamento no estoque
             } else {
                 System.out.println("Opção inválida.");
                 // opcap resposta inválida
