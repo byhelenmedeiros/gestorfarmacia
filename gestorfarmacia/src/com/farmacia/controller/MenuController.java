@@ -94,6 +94,7 @@ public class MenuController {
             case 2: 
                 System.out.println("------ GESTAO DE MEDICAMENTOS------");  
                     mostrarSubMenuMedicamentos(); 
+                break;
             case 8:
                 System.out.println("Você escolheu Obter o número total de vendas.");
                 break;
