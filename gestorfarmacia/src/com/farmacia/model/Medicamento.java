@@ -20,6 +20,8 @@ public class GerirMedicamentos {
                 String nome = scanner.nextLine();
             System.out.println("Quantidade: ");
                 int quantidade = Integer.parseInt(scanner.nextLine());
+            System.out.println("Data de validade: ");
+                String validade = scanner.nextLine();
             System.out.println("Descrição do medicamento: ");
                 String descricao = scanner.nextLine();
             System.out.println("Preço: ");
