@@ -43,7 +43,7 @@ public class MenuController {
         // Lógica para cadastrar um medicamento
     }
 
-    private void mostrarSubMenuMedicamentos() {
+    public void mostrarSubMenuMedicamentos() {
         System.out.println("------ GESTAO DE MEDICAMENTOS------");
         System.out.println("1. Cadastrar Novo Medicamento");
         System.out.println("2. Mostrar Todos os Medicamentos");

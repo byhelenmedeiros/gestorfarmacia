@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import com.farmacia.controller.MenuController;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+import com.farmacia.controller.MenuController;
 
 public class GerirMedicamentos {
     private List<Medicamento> listaMedicamentos;
@@ -44,7 +43,7 @@ public class GerirMedicamentos {
             System.out.println("Medicamento cadastrado com sucesso! Pretende cadastrar novo medicamento ?");
             System.out.println("1 - Não");
             System.out.println("2 - Sim, continuar cadastro de medicamentos");
-            
+                cadastroMedicamento();
             System.out.println("3 - Voltar para menu principal");
             
 
@@ -53,9 +52,12 @@ public class GerirMedicamentos {
             switch (escolha) {
                 case 1:
                     continuarCadastro = false;
+                    menuController.mostrarSubMenuMedicamentos();
                     break;
                 case 2:
                     continuarCadastro = true;
+                        cadastroMedicamento();
+                    
                     break;
                     case 3:
                     menuController.exibirMenuPrincipal(); // Chama o menu principal
