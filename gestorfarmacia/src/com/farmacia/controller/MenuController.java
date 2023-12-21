@@ -56,7 +56,7 @@ public class MenuController {
         switch (opcao) {
             case 1:
                 System.out.println("Escolheu Cadastrar Novo Medicamento.");
-                cadastroMedicamento();
+                    cadastroMedicamento();
                 break;
             case 2:
                 System.out.println("Escolheu Mostrar Todos os Medicamentos:");

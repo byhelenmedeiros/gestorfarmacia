@@ -1,23 +1,24 @@
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import com.farmacia.controller.MenuController;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 
 public class GerirMedicamentos {
     private List<Medicamento> listaMedicamentos;
     private Scanner scanner;
     private DateTimeFormatter formatter;
+    private MenuController menuController; 
 
     public GerirMedicamentos() {
         this.listaMedicamentos = new ArrayList<>();
         this.scanner = new Scanner(System.in);
         this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.menuController = new MenuController(); // Inicializando MenuController
     }
-
     public void cadastroMedicamento() {
         boolean continuarCadastro = true;
 
@@ -43,7 +44,9 @@ public class GerirMedicamentos {
             System.out.println("Medicamento cadastrado com sucesso! Pretende cadastrar novo medicamento ?");
             System.out.println("1 - Não");
             System.out.println("2 - Sim, continuar cadastro de medicamentos");
+            
             System.out.println("3 - Voltar para menu principal");
+            
 
             int escolha = Integer.parseInt(scanner.nextLine());
 
@@ -54,8 +57,8 @@ public class GerirMedicamentos {
                 case 2:
                     continuarCadastro = true;
                     break;
-                case 3:
-                    mostrarMenuPrincipal();
+                    case 3:
+                    menuController.exibirMenuPrincipal(); // Chama o menu principal
                     break;
                 default:
                     System.out.println("Escolha inválida, encerrando cadastro de medicamentos!");
@@ -74,10 +77,6 @@ public class GerirMedicamentos {
         }
     }
 
-    private void mostrarMenuPrincipal() {
-        // Implementação do menu principal
-    }
-
     public void mostrarTodosMedicamentos() {
         if (listaMedicamentos.isEmpty()) {
             System.out.println("Não há medicamentos cadastrados.");
@@ -94,4 +93,5 @@ public class GerirMedicamentos {
             }
         }
     }
+    
 }
