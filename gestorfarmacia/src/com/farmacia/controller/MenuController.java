@@ -21,7 +21,7 @@ public class MenuController {
         scanner.close();
     }
 
-    public void gerirMedicamentos() {
+    private void gerirMedicamentos() {
         int opcao;
 
         do {
@@ -68,10 +68,9 @@ public class MenuController {
                 break;
             case 0:
                 System.out.println("Voltando para o Menu Principal.");
-                // Exibe o menu principal ao voltar
                 break;
             default:
-                System.out.println("Opção invalida. Escolha novamente.");
+                System.out.println("Opção inválida. Escolha novamente.");
         }
     }
 
@@ -110,7 +109,7 @@ public class MenuController {
                 System.out.println("Saindo.");
                 break;
             default:
-                System.out.println("Opcao inválida. Escolha novamente.");
+                System.out.println("Opção inválida. Escolha novamente.");
         }
     }
 }
