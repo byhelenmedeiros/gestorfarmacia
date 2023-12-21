@@ -31,6 +31,18 @@ public class MenuController {
         } while (opcao != 0);
     }
 
+    public void venderMedicamento() {
+        // Lógica para vender um medicamento
+    }
+    public void mostrarTodosMedicamentos() {
+        // Lógica para vender um medicamento
+    }
+    public void cadastroMedicamento() {
+        // Lógica para vender um medicamento
+    }
+    
+    
+
     private void mostrarSubMenuMedicamentos() {
         System.out.println("---- GERIR MEDICAMENTOS ----");
         System.out.println("1. Cadastrar Novo Medicamento");
