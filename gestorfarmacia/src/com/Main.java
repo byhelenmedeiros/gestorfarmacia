@@ -1,4 +1,4 @@
-package com.farmacia;
+package com;
 
 import com.farmacia.controller.MenuController;
 
