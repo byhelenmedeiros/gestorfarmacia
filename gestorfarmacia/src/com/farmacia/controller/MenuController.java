@@ -55,15 +55,15 @@ public class MenuController {
     private void realizarAcaoMedicamentos(int opcao) {
         switch (opcao) {
             case 1:
-                System.out.println("Você escolheu Cadastrar Novo Medicamento.");
+                System.out.println("Escolheu Cadastrar Novo Medicamento.");
                 cadastroMedicamento();
                 break;
             case 2:
-                System.out.println("Você escolheu Mostrar Todos os Medicamentos:");
+                System.out.println("Escolheu Mostrar Todos os Medicamentos:");
                 mostrarTodosMedicamentos();
                 break;
             case 3:
-                System.out.println("Você escolheu Vender Medicamento.");
+                System.out.println("Escolheu Vender Medicamento.");
                 venderMedicamento();
                 break;
             case 0:
@@ -71,7 +71,7 @@ public class MenuController {
                 // Exibe o menu principal ao voltar
                 break;
             default:
-                System.out.println("Opção inválida. Escolha novamente.");
+                System.out.println("Opção invalida. Escolha novamente.");
         }
     }
 
@@ -97,20 +97,20 @@ public class MenuController {
     private void realizarAcao(int opcao) {
         switch (opcao) {
             case 1:
-                System.out.println("Você escolheu Registrar Venda.");
+                System.out.println("Escolheu Registrar Venda.");
                 break;
             case 2:
-                System.out.println("------ GESTAO DE MEDICAMENTOS------");
-                gerirMedicamentos(); // Chama o método para gerir medicamentos
+                System.out.println("Escolheu Gerir medicamentos");
+                gerirMedicamentos(); 
                 break;
             case 8:
-                System.out.println("Você escolheu Obter o número total de vendas.");
+                System.out.println("Escolheu Obter o número total de vendas.");
                 break;
             case 0:
                 System.out.println("Saindo.");
                 break;
             default:
-                System.out.println("Opção inválida. Escolha novamente.");
+                System.out.println("Opcao inválida. Escolha novamente.");
         }
     }
 }
