@@ -78,7 +78,7 @@ public class MenuController {
         System.out.println("---- Menu de Administracao ----");
         System.out.println("1. Registar Venda");
         System.out.println("2. Gerir Medicamentos");
-        System.out.println("---- Relatório de Vendas ----");
+        System.out.println("3. Relatório de Vendas");
         System.out.println("8. Obter o número total de vendas");
         System.out.println("9. Mostrar todos os Medicamento");
         System.out.println("0. Sair");
