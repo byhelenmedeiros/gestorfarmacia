@@ -2,15 +2,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class GerirMedicamentos {
     private List<Medicamento> listaMedicamentos;
     private Scanner scanner;
+    private DateTimeFormatter formatter;
 
     public GerirMedicamentos() {
         this.listaMedicamentos = new ArrayList<>();
         this.scanner = new Scanner(System.in);
+        this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     }
 
     public void cadastroMedicamento() {
@@ -74,23 +77,23 @@ public class GerirMedicamentos {
        
     }
 
-   private void mostrarTodosMedicamentos() {
-    if (listaDeMedicamentos.isEmpty()) {
-        System.out.println("Não há medicamentos cadastrados.");
-    } else {
-        System.out.println("Detalhes de todos os medicamentos:");
-        for (Medicamento medicamento : listaDeMedicamentos) {
-            System.out.println("Nome do medicamento: " + medicamento.getNome());
-            System.out.println("Quantidade em stock: " + medicamento.getQuantidade());
-            System.out.println("Data de validade " + medicamento.getdataValidade());
-            System.out.println("Preço: " + medicamento.getPreco());
-            System.out.println("Descriçao do medicamento: " + medicamento.getDescricao());
-            System.out.println("Tipo de medicamento: " + medicamento.getTipo());
-
-            System.out.println("---------------");
+    public void mostrarTodosMedicamentos() {
+        if (listaMedicamentos.isEmpty()) {
+            System.out.println("Não há medicamentos cadastrados.");
+        } else {
+            System.out.println("Detalhes de todos os medicamentos:");
+            for (Medicamento medicamento : listaMedicamentos) {
+                System.out.println("Nome do medicamento: " + medicamento.getNome());
+                System.out.println("Quantidade em estoque: " + medicamento.getQuantidade());
+                System.out.println("Data de validade: " + medicamento.getDataValidade().format(formatter));
+                System.out.println("Preço: " + medicamento.getPreco());
+                System.out.println("Descrição do medicamento: " + medicamento.getDescricao());
+                System.out.println("Tipo de medicamento: " + medicamento.getTipo());
+                System.out.println("---------------");
+            }
         }
     }
-}   private LocalDate dataValidade;
+     private LocalDate dataValidade;
 
         public Medicamento(LocalDate dataValidade) {
             this.dataValidade = dataValidade;
