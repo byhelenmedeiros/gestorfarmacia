@@ -62,7 +62,28 @@ public class MenuController {
                     System.out.println("Opção inválida. Escolha novamente.");
             }
 }
+        
+        private LocalDate dataValidade;
 
+        public Medicamento(LocalDate dataValidade) {
+            this.dataValidade = dataValidade;
+        }
+
+        public void validarDataDeValidade() {
+            LocalDate hoje = LocalDate.now();
+            long diasAteVencimento = ChronoUnit.DAYS.between(hoje, dataValidade);
+
+            if (diasAteVencimento <= 1 && diasAteVencimento >= 0) {
+                System.out.println("Atenção: O medicamento está prestes a vencer em menos de 24 horas!");
+                // Aqui você pode adicionar código para notificar o usuário de alguma forma (enviar um e-mail, exibir uma mensagem, etc.)
+            } else if (diasAteVencimento < 0) {
+                System.out.println("Atenção: O medicamento está vencido!");
+                // Código para lidar com medicamento vencido, se necessário
+            } else {
+                System.out.println("A data de validade do medicamento está OK.");
+            }
+        }
+    }
 
 
     private void mostrarMenuPrincipal() {
