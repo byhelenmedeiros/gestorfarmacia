@@ -26,7 +26,7 @@ public class MenuController {
 
         do {
             mostrarSubMenuMedicamentos();
-            opcao = receberOpcao();
+            opcao = receberOpcaoSubMenu();
             realizarAcaoMedicamentos(opcao);
         } while (opcao != 0);
     }
@@ -44,17 +44,12 @@ public class MenuController {
     }
 
     private void mostrarSubMenuMedicamentos() {
-        int opcao;
-        do {
-            System.out.println("---- GERIR MEDICAMENTOS ----");
-            System.out.println("1. Cadastrar Novo Medicamento");
-            System.out.println("2. Mostrar Todos os Medicamentos");
-            System.out.println("3. Vender Medicamento");
-            System.out.println("0. Voltar para o Menu Principal");
-            System.out.print("Escolha uma opcao: ");
-            opcao = receberOpcao();
-            realizarAcaoMedicamentos(opcao);
-        } while (opcao != 0);
+        System.out.println("------ GESTAO DE MEDICAMENTOS------");
+        System.out.println("1. Cadastrar Novo Medicamento");
+        System.out.println("2. Mostrar Todos os Medicamentos");
+        System.out.println("3. Vender Medicamento");
+        System.out.println("0. Voltar para o Menu Principal");
+        System.out.print("Escolha uma opcao: ");
     }
 
     private void realizarAcaoMedicamentos(int opcao) {
@@ -96,6 +91,17 @@ public class MenuController {
             scanner.next();
         }
         return scanner.nextInt();
+    }
+
+    private int receberOpcaoSubMenu() {
+        while (true) {
+            int opcao = scanner.nextInt();
+            if (opcao >= 0 && opcao <= 3) {
+                return opcao;
+            } else {
+                System.out.println("Opção inválida. Escolha novamente.");
+            }
+        }
     }
 
     private void realizarAcao(int opcao) {
