@@ -22,16 +22,18 @@ public class GerirMedicamentos {
                 String nome = scanner.nextLine();
             System.out.println("Quantidade: ");
                 int quantidade = Integer.parseInt(scanner.nextLine());
-            System.out.println("Data de validade: ");
-                String validade = scanner.nextLine();
+            System.out.println("Data de Validade (dd/MM/yyyy): ");
+                String dataValidadeStr = scanner.nextLine();
+                    LocalDate dataValidade = LocalDate.parse(dataValidadeStr, formatter);
             System.out.println("Descrição do medicamento: ");
                 String descricao = scanner.nextLine();
             System.out.println("Preço: ");
                 double preco = Double.parseDouble(scanner.nextLine());
             System.out.println("Tipo de medicamento: ");
                 String tipo = scanner.nextLine();
+                
 
-            Medicamento novoMedicamento = new Medicamento(nome, quantidade, descricao, preco, tipo);
+            Medicamento novoMedicamento = new Medicamento(nome, quantidade, dataValidade, descricao, preco, tipo);
             listaMedicamentos.add(novoMedicamento);
 
             System.out.println("Medicamento cadastrado com sucesso! Pretende cadastrar novo medicamento ?");
@@ -80,6 +82,7 @@ public class GerirMedicamentos {
         for (Medicamento medicamento : listaDeMedicamentos) {
             System.out.println("Nome do medicamento: " + medicamento.getNome());
             System.out.println("Quantidade em stock: " + medicamento.getQuantidade());
+            System.out.println("Data de validade " + medicamento.getdataValidade());
             System.out.println("Preço: " + medicamento.getPreco());
             System.out.println("Descriçao do medicamento: " + medicamento.getDescricao());
             System.out.println("Tipo de medicamento: " + medicamento.getTipo());
