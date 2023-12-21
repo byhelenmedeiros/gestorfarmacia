@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class GerirMedicamentos {
     private List<Medicamento> listaMedicamentos;
