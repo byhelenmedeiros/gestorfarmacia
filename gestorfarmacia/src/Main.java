@@ -1,4 +1,5 @@
 
+import com.farmacia.controller.GerirMedicamentos;
 import com.farmacia.controller.MenuController;
 
 public class Main {

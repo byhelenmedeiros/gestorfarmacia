@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class MenuController {
     private Scanner scanner;
+    private GerirMedicamentos gerirMedicamentos;
+
 
     public MenuController() {
         this.scanner = new Scanner(System.in);
@@ -31,17 +33,6 @@ public class MenuController {
         } while (opcao != 0);
     }
 
-    public void venderMedicamento() {
-        // Lógica para vender um medicamento
-    }
-
-    public void mostrarTodosMedicamentos() {
-        // Lógica para mostrar todos os medicamentos
-    }
-
-    public void cadastroMedicamento() {
-        // Lógica para cadastrar um medicamento
-    }
 
     public void mostrarSubMenuMedicamentos() {
         System.out.println("------ GESTAO DE MEDICAMENTOS------");
@@ -56,15 +47,14 @@ public class MenuController {
         switch (opcao) {
             case 1:
                 System.out.println("Escolheu Cadastrar Novo Medicamento.");
-                    cadastroMedicamento();
+                    gerirMedicamentos.cadastroMedicamento();
                 break;
             case 2:
                 System.out.println("Escolheu Mostrar Todos os Medicamentos:");
-                mostrarTodosMedicamentos();
+                    gerirMedicamentos.mostrarTodosMedicamentos();
                 break;
             case 3:
                 System.out.println("Escolheu Vender Medicamento.");
-                venderMedicamento();
                 break;
             case 0:
                 System.out.println("Voltando para o Menu Principal.");

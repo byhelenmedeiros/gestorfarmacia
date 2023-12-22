@@ -1,10 +1,11 @@
+package com.farmacia.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import com.farmacia.model.Medicamento;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
-import com.farmacia.controller.MenuController;
 
 public class GerirMedicamentos {
     private List<Medicamento> listaMedicamentos;
@@ -18,7 +19,54 @@ public class GerirMedicamentos {
         this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.menuController = new MenuController(); // Inicializando MenuController
     }
+    
     public void cadastroMedicamento() {
+        boolean continuarCadastro = true;
+    
+        while (continuarCadastro) {
+            System.out.println("------Cadastro de novos medicamentos------");
+            System.out.println("Nome do Medicamento: ");
+            String nome = scanner.nextLine();
+            System.out.println("Quantidade: ");
+            int quantidade = Integer.parseInt(scanner.nextLine());
+            System.out.println("Data de Validade (dd/MM/yyyy): ");
+            String dataValidadeStr = scanner.nextLine();
+            LocalDate dataValidade = LocalDate.parse(dataValidadeStr, formatter);
+            System.out.println("Descrição do medicamento: ");
+            String descricao = scanner.nextLine();
+            System.out.println("Preço: ");
+            double preco = Double.parseDouble(scanner.nextLine());
+            System.out.println("Tipo de medicamento: ");
+            String tipo = scanner.nextLine();
+    
+            Medicamento novoMedicamento = new Medicamento(nome, quantidade, dataValidade, descricao, preco, tipo);
+            listaMedicamentos.add(novoMedicamento);
+    
+            System.out.println("Medicamento cadastrado com sucesso! Pretende cadastrar novo medicamento ?");
+            System.out.println("1 - Não");
+            System.out.println("2 - Sim, continuar cadastro de medicamentos");
+            System.out.println("3 - Voltar para menu principal");
+    
+            int escolha = Integer.parseInt(scanner.nextLine());
+    
+            switch (escolha) {
+                case 1:
+                    continuarCadastro = false;
+                    break;
+                case 2:
+                    continuarCadastro = true;
+                    break;
+                case 3:
+                    menuController.exibirMenuPrincipal(); // Chama o menu principal
+                    return; // Retorna após exibir o menu principal
+                default:
+                    System.out.println("Escolha inválida, encerrando cadastro de medicamentos!");
+                    continuarCadastro = false;
+                    break;
+            }
+        }
+    }
+    
         boolean continuarCadastro = true;
 
         while (continuarCadastro) {
