@@ -1,12 +1,11 @@
+package com.farmacia.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import com.farmacia.controller.MenuController;
-
-public class GerirMedicamentos {
+public class GerirMedicamentos<Medicamento> {
     private List<Medicamento> listaMedicamentos;
     private Scanner scanner;
     private DateTimeFormatter formatter;
