@@ -45,6 +45,7 @@ public class GerirMedicamentos {
             System.out.println("2 - Sim, continuar cadastro de medicamentos");
                 cadastroMedicamento();
             System.out.println("3 - Voltar para menu principal");
+             menuController.exibirMenuPrincipal();
             
 
             int escolha = Integer.parseInt(scanner.nextLine());
@@ -52,7 +53,7 @@ public class GerirMedicamentos {
             switch (escolha) {
                 case 1:
                     continuarCadastro = false;
-                    menuController.mostrarSubMenuMedicamentos();
+                        menuController.mostrarSubMenuMedicamentos();
                     break;
                 case 2:
                     continuarCadastro = true;
@@ -64,7 +65,9 @@ public class GerirMedicamentos {
                     break;
                 default:
                     System.out.println("Escolha inválida, encerrando cadastro de medicamentos!");
-                    continuarCadastro = false;
+                        continuarCadastro = false;
+                            menuController.exibirMenuPrincipal(); 
+
                     break;
             }
         }
