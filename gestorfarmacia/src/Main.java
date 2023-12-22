@@ -1,6 +1,7 @@
 
-import com.farmacia.controller.GerirMedicamentos;
 import com.farmacia.controller.MenuController;
+import com.farmacia.controller.GerirMedicamentos;
+
 
 public class Main {
     public static void main(String[] args) {
