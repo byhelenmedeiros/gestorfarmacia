@@ -31,22 +31,27 @@ public class MenuController {
                     while (!vendaConcluida) {
                         gerirMedicamentos.mostrarListaVenda();
                         System.out.print("Escolha o medicamento para venda (Número): ");
-                        int opcaoVenda = Integer.parseInt(scanner.nextLine());
-                        if (opcaoVenda >= 1 && opcaoVenda <= gerirMedicamentos.listaMedicamentos.size()) {
-                            Medicamento med = gerirMedicamentos.listaMedicamentos.get(opcaoVenda - 1);
-                            System.out.println("Medicamento selecionado: " + med.getNome());
-                            System.out.println("Quantidade em Estoque: " + med.getQuantidade());
-                            System.out.print("Quantidade para vender: ");
+                        String input = scanner.nextLine();
+                        if (!input.isEmpty()) {
+                            int opcaoVenda = Integer.parseInt(input);
+                            if (opcaoVenda >= 1 && opcaoVenda <= gerirMedicamentos.listaMedicamentos.size()) {
+                                Medicamento med = gerirMedicamentos.listaMedicamentos.get(opcaoVenda - 1);
+                                System.out.println("Medicamento selecionado: " + med.getNome());
+                                System.out.println("Quantidade em Estoque: " + med.getQuantidade());
+                                System.out.print("Quantidade para vender: ");
                             int quantidadeAVender = Integer.parseInt(scanner.nextLine());
                             gerirMedicamentos.registrarVenda(med.getId(), quantidadeAVender);
                             System.out.println("Venda concluída!");
                             vendaConcluida = true;
-                        } else {
-                            System.out.println("Opção inválida. Tente novamente.");
-                        }
+                                } else {
+                                    System.out.println("Opção inválida. Tente novamente.");
+                                }
+                            } else {
+                                System.out.println("Entrada inválida. Tente novamente.");
+                            }
                     }
                 }
-                break;
+                    break;
 
                 case 2:
                     exibirMenuMedicamentos(); // Opção para gerir medicamentos
@@ -104,7 +109,7 @@ public class MenuController {
     
 
     private void mostrarMenuPrincipal() {
-        System.out.println("---- Menu de Administracao ----");
+        System.out.println("---- MENU PRINCIPAL ----");
         System.out.println("1. Registrar Venda");
         System.out.println("2. Gerir Medicamentos");
         System.out.println("3. Relatório de Vendas");
