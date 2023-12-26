@@ -1,4 +1,3 @@
-package com.farmacia.controller;
 
 import java.util.Scanner;
 import java.util.UUID;
@@ -73,8 +72,6 @@ public class MenuController {
         scanner.close();
     }
 
-    // Restante do código...
-}
 
 
      private void exibirMenuMedicamentos() {
