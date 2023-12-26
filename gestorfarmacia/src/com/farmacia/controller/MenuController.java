@@ -1,6 +1,9 @@
 package com.farmacia.controller;
 
 import java.util.Scanner;
+import java.util.UUID;
+
+import com.farmacia.model.Medicamento;
 
 public class MenuController {
     private Scanner scanner;
@@ -10,6 +13,7 @@ public class MenuController {
         this.scanner = new Scanner(System.in);
         this.gerirMedicamentos = new GerirMedicamentos(this); // Passando a referência do MenuController
     }
+
     public void exibirMenuPrincipal() {
         int opcao;
 
@@ -18,10 +22,33 @@ public class MenuController {
             opcao = receberOpcao();
 
             switch (opcao) {
-                case 1:
-                        gerirMedicamentos.realizarVendaMedicamento();
-                    System.out.println("Escolheu Registrar Venda.");
-                    break;
+                    case 1:
+                System.out.println("Escolheu Registrar Venda.");
+                if (gerirMedicamentos.listaMedicamentos.isEmpty()) {
+                    System.out.println("Não há medicamentos para venda. Por favor, cadastre novos medicamentos.");
+                    gerirMedicamentos.cadastroMedicamento();
+                } else {
+                    boolean vendaConcluida = false;
+                    while (!vendaConcluida) {
+                        gerirMedicamentos.mostrarListaVenda();
+                        System.out.print("Escolha o medicamento para venda (Número): ");
+                        int opcaoVenda = Integer.parseInt(scanner.nextLine());
+                        if (opcaoVenda >= 1 && opcaoVenda <= gerirMedicamentos.listaMedicamentos.size()) {
+                            Medicamento med = gerirMedicamentos.listaMedicamentos.get(opcaoVenda - 1);
+                            System.out.println("Medicamento selecionado: " + med.getNome());
+                            System.out.println("Quantidade em Estoque: " + med.getQuantidade());
+                            System.out.print("Quantidade para vender: ");
+                            int quantidadeAVender = Integer.parseInt(scanner.nextLine());
+                            gerirMedicamentos.registrarVenda(med.getId(), quantidadeAVender);
+                            System.out.println("Venda concluída!");
+                            vendaConcluida = true;
+                        } else {
+                            System.out.println("Opção inválida. Tente novamente.");
+                        }
+                    }
+                }
+                break;
+
                 case 2:
                     exibirMenuMedicamentos(); // Opção para gerir medicamentos
                     break;
@@ -46,6 +73,10 @@ public class MenuController {
         scanner.close();
     }
 
+    // Restante do código...
+}
+
+
      private void exibirMenuMedicamentos() {
         int opcao;
     
@@ -61,7 +92,6 @@ public class MenuController {
                     gerirMedicamentos.mostrarTodosMedicamentos(); // Opção para mostrar todos os medicamentos
                     break;
                 case 3:
-                     gerirMedicamentos.realizarVendaMedicamento();
                     System.out.println("Escolheu Vender Medicamento.");
                     break;
                 case 0:
@@ -71,8 +101,9 @@ public class MenuController {
                     System.out.println("Opção inválida. Escolha novamente.");
             }
         } while (opcao != 0);
+
+        scanner.close();
     }
-    
     
 
     private void mostrarMenuPrincipal() {

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GerirMedicamentos {
-    private List<Medicamento> listaMedicamentos;
+    List<Medicamento> listaMedicamentos;
     private Scanner scanner;
     private DateTimeFormatter formatter;
     private MenuController menuController; 
@@ -107,11 +107,14 @@ public class GerirMedicamentos {
             System.out.println("NÃO HÁ MEDICAMENTOS CADASTRADOS.");
         } else {
             System.out.println("Lista de Medicamentos Disponíveis para Venda:");
-            for (Medicamento medicamento : listaMedicamentos) {
-                System.out.println("ID " + medicamento.getId() + " - " + medicamento.getNome());
+            for (int i = 0; i < listaMedicamentos.size(); i++) {
+                Medicamento medicamento = listaMedicamentos.get(i);
+                System.out.println((i + 1) + ". " + medicamento.getNome() + " - Quantidade: " + medicamento.getQuantidade());
             }
         }
     }
+    
+    
     
     public void registrarVenda(UUID idMedicamento, int quantidadeAVender) {
         Medicamento medicamentoParaVenda = null;
