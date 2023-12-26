@@ -7,11 +7,7 @@ import com.farmacia.model.Medicamento;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-<<<<<<< HEAD
 public class GerirMedicamentos {
-=======
-public class GerirMedicamentos<Medicamento> {
->>>>>>> d64f52cf31c94b4d2dbfafbfc179659be175ac09
     private List<Medicamento> listaMedicamentos;
     private Scanner scanner;
     private DateTimeFormatter formatter;
