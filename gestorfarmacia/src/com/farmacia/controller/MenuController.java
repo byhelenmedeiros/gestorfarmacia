@@ -19,7 +19,7 @@ public class MenuController {
 
             switch (opcao) {
                 case 1:
-                    // Lógica para Registrar Venda
+                        gerirMedicamentos.realizarVendaMedicamento();
                     System.out.println("Escolheu Registrar Venda.");
                     break;
                 case 2:
