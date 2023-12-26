@@ -1,8 +1,9 @@
-
+package com.farmacia.model;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
+
 
 public class Medicamento {
     private String nome;
@@ -20,7 +21,6 @@ public class Medicamento {
         this.preco = preco;
         this.tipo = tipo;
     }
-
     public String getNome() {
         return nome;
     }

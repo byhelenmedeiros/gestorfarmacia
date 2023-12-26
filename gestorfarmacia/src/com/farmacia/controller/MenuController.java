@@ -6,73 +6,92 @@ public class MenuController {
     private Scanner scanner;
     private GerirMedicamentos gerirMedicamentos;
 
-
     public MenuController() {
         this.scanner = new Scanner(System.in);
+        this.gerirMedicamentos = new GerirMedicamentos(this); // Passando a referência do MenuController
     }
-
     public void exibirMenuPrincipal() {
         int opcao;
 
         do {
             mostrarMenuPrincipal();
             opcao = receberOpcao();
-            realizarAcao(opcao);
+
+            switch (opcao) {
+                case 1:
+                    // Lógica para Registrar Venda
+                    System.out.println("Escolheu Registrar Venda.");
+                    break;
+                case 2:
+                    exibirMenuMedicamentos(); // Opção para gerir medicamentos
+                    break;
+                case 3:
+                    // Lógica para Relatório de Vendas
+                    System.out.println("Escolheu Relatório de Vendas.");
+                    break;
+                case 8:
+                    // Lógica para Obter número total de vendas
+                    System.out.println("Escolheu Obter número total de vendas.");
+                    break;
+                case 9:
+                    gerirMedicamentos.mostrarTodosMedicamentos(); // Opção para mostrar todos os medicamentos
+                    break;
+                case 0:
+                    System.out.println("Saindo.");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Escolha novamente.");
+            }
         } while (opcao != 0);
 
         scanner.close();
     }
 
-    private void gerirMedicamentos() {
+    private void exibirMenuMedicamentos() {
         int opcao;
 
         do {
             mostrarSubMenuMedicamentos();
             opcao = receberOpcaoSubMenu();
-            realizarAcaoMedicamentos(opcao);
+
+            switch (opcao) {
+                case 1:
+                    gerirMedicamentos.cadastroMedicamento(); // Opção para cadastrar medicamento
+                    break;
+                case 2:
+                    gerirMedicamentos.mostrarTodosMedicamentos(); // Opção para mostrar todos os medicamentos
+                    break;
+                case 3:
+                    // Lógica para Vender Medicamento
+                    System.out.println("Escolheu Vender Medicamento.");
+                    break;
+                case 0:
+                    System.out.println("Voltando para o Menu Principal.");
+                    return; // Retorna ao menu principal
+                default:
+                    System.out.println("Opção inválida. Escolha novamente.");
+            }
         } while (opcao != 0);
     }
 
+    private void mostrarMenuPrincipal() {
+        System.out.println("---- Menu de Administracao ----");
+        System.out.println("1. Registrar Venda");
+        System.out.println("2. Gerir Medicamentos");
+        System.out.println("3. Relatório de Vendas");
+        System.out.println("8. Obter número total de vendas");
+        System.out.println("9. Mostrar todos os Medicamentos");
+        System.out.println("0. Sair");
+        System.out.print("Escolha uma opção: ");
+    }
 
-    public void mostrarSubMenuMedicamentos() {
+    private void mostrarSubMenuMedicamentos() {
         System.out.println("------ GESTAO DE MEDICAMENTOS------");
         System.out.println("1. Cadastrar Novo Medicamento");
         System.out.println("2. Mostrar Todos os Medicamentos");
         System.out.println("3. Vender Medicamento");
         System.out.println("0. Voltar para o Menu Principal");
-        System.out.print("Escolha uma opcao: ");
-    }
-
-    private void realizarAcaoMedicamentos(int opcao) {
-        switch (opcao) {
-            case 1:
-                System.out.println("Escolheu Cadastrar Novo Medicamento.");
-                    gerirMedicamentos.cadastroMedicamento();
-                break;
-            case 2:
-                System.out.println("Escolheu Mostrar Todos os Medicamentos:");
-                    gerirMedicamentos.mostrarTodosMedicamentos();
-                break;
-            case 3:
-                System.out.println("Escolheu Vender Medicamento.");
-                break;
-            case 0:
-                System.out.println("Voltando para o Menu Principal.");
-                break;
-            default:
-                System.out.println("Opção inválida. Escolha novamente.");
-        }
-    }
-
-    private void mostrarMenuPrincipal() {
-        System.out.println("---- Menu de Administracao ----");
-        System.out.println("1. Registar Venda");
-        System.out.println("2. Gerir Medicamentos");
-        System.out.println("3. Relatório de Vendas");
-        System.out.println("8. Obter o número total de vendas");
-        System.out.println("9. Mostrar todos os Medicamento");
-        System.out.println("0. Sair");
-        System.out.print("Escolha uma opcao: ");
+        System.out.print("Escolha uma opção: ");
     }
 
     private int receberOpcao() {
@@ -91,26 +110,6 @@ public class MenuController {
             } else {
                 System.out.println("Opção inválida. Escolha novamente.");
             }
-        }
-    }
-
-    private void realizarAcao(int opcao) {
-        switch (opcao) {
-            case 1:
-                System.out.println("Escolheu Registrar Venda.");
-                break;
-            case 2:
-                System.out.println("Escolheu Gerir medicamentos");
-                gerirMedicamentos();
-                break;
-            case 8:
-                System.out.println("Escolheu Obter o número total de vendas.");
-                break;
-            case 0:
-                System.out.println("Saindo.");
-                break;
-            default:
-                System.out.println("Opção inválida. Escolha novamente.");
         }
     }
 }

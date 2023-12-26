@@ -1,12 +1,11 @@
 package com.farmacia.controller;
 
+import com.farmacia.model.Medicamento;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import com.farmacia.model.Medicamento;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class GerirMedicamentos {
     private List<Medicamento> listaMedicamentos;
@@ -14,13 +13,13 @@ public class GerirMedicamentos {
     private DateTimeFormatter formatter;
     private MenuController menuController; 
 
-    public GerirMedicamentos() {
+    public GerirMedicamentos(MenuController menuController) {
         this.listaMedicamentos = new ArrayList<>();
         this.scanner = new Scanner(System.in);
         this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        this.menuController = new MenuController(); // Inicializando MenuController
+        this.menuController = menuController; // Inicialização da variável menuController
     }
-    
+
     public void cadastroMedicamento() {
         boolean continuarCadastro = true;
 
