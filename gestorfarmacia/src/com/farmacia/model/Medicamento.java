@@ -1,19 +1,21 @@
 package com.farmacia.model;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.Scanner;
+import java.util.UUID;
 
 
 public class Medicamento {
-    private String nome;
-    private int quantidade;
-    private LocalDate dataValidade;
-    private String descricao;
-    private double preco;
-    private String tipo;
+        private UUID id;
+        private String nome;
+        private int quantidade;
+        private LocalDate dataValidade;
+        private String descricao;
+        private double preco;
+        private String tipo;
+        
 
     public Medicamento(String nome, int quantidade, LocalDate dataValidade, String descricao, double preco, String tipo) {
+        this.id = UUID.randomUUID();
         this.nome = nome;
         this.quantidade = quantidade;
         this.dataValidade = dataValidade;
@@ -21,6 +23,10 @@ public class Medicamento {
         this.preco = preco;
         this.tipo = tipo;
     }
+    public UUID getId() {
+        return id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -69,46 +75,6 @@ public class Medicamento {
         this.tipo = tipo;
     }
 
-    public void validarDataDeValidade() {
-        LocalDate hoje = LocalDate.now();
-        long diasAteVencimento = ChronoUnit.DAYS.between(hoje, dataValidade);
 
-        if (diasAteVencimento <= 1 && diasAteVencimento >= 0) {
-            System.out.println("Atenção: O medicamento está prestes a vencer em menos de 24 horas!");
-            System.out.println("Deseja remover o medicamento do estoque? (Sim/Não)");
-
-            try (Scanner scanner = new Scanner(System.in)) {
-                String resposta = scanner.nextLine();
-
-                if (resposta.equalsIgnoreCase("Sim")) {
-                    System.out.println("Medicamento removido do estoque.");
-                } else if (resposta.equalsIgnoreCase("Não")) {
-                    System.out.println("Medicamento mantido no estoque.");
-                } else {
-                    System.out.println("Opção inválida.");
-                    // Lógica para lidar com uma resposta inválida
-                }
-            }
-        } else if (diasAteVencimento < 0) {
-            System.out.println("Atenção: O medicamento está vencido!");
-            System.out.println("Deseja remover o medicamento do estoque? (Sim/Não)");
-
-            try (Scanner scanner = new Scanner(System.in)) {
-                String resposta = scanner.nextLine();
-
-                if (resposta.equalsIgnoreCase("Sim")) {
-                    // Remover o medicamento do estoque
-                    System.out.println("Medicamento removido do estoque.");
-                    //remoção do estoque
-                } else if (resposta.equalsIgnoreCase("Não")) {
-                    System.out.println("Medicamento mantido no estoque.");
-                } else {
-                    System.out.println("Opção inválida.");
-                    // opcap resposta inválida
-                }
-            }
-        } else {
-            System.out.println("A data de validade do medicamento está OK.");
-        }
     }
-}
+

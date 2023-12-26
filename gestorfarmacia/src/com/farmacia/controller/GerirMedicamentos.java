@@ -1,5 +1,6 @@
 package com.farmacia.controller;
 
+import java.util.UUID;
 import com.farmacia.model.Medicamento;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -17,33 +18,36 @@ public class GerirMedicamentos {
         this.listaMedicamentos = new ArrayList<>();
         this.scanner = new Scanner(System.in);
         this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        this.menuController = menuController; // Inicializa√ß√£o da vari√°vel menuController
+        this.menuController = menuController; 
     }
 
+    /**
+     * 
+     */
     public void cadastroMedicamento() {
         boolean continuarCadastro = true;
 
         while (continuarCadastro) {
             System.out.println("------Cadastro de novos medicamentos------");
-            System.out.println("Nome do Medicamento: ");
-            String nome = scanner.nextLine();
+                System.out.println("Nome do Medicamento: ");
+                    String nome = scanner.nextLine();
             System.out.println("Quantidade: ");
-            int quantidade = Integer.parseInt(scanner.nextLine());
+                int quantidade = Integer.parseInt(scanner.nextLine());
             System.out.println("Data de Validade (dd/MM/yyyy): ");
-            String dataValidadeStr = scanner.nextLine();
-            LocalDate dataValidade = LocalDate.parse(dataValidadeStr, formatter);
-            System.out.println("Descri√ß√£o do medicamento: ");
+                String dataValidadeStr = scanner.nextLine();
+                    LocalDate dataValidade = LocalDate.parse(dataValidadeStr, formatter);
+            System.out.println("DescriÁ„o do medicamento: ");
             String descricao = scanner.nextLine();
-            System.out.println("Pre√ßo: ");
-            double preco = Double.parseDouble(scanner.nextLine());
+            System.out.println("PreÁo: ");
+                double preco = Double.parseDouble(scanner.nextLine());
             System.out.println("Tipo de medicamento: ");
-            String tipo = scanner.nextLine();
+                String tipo = scanner.nextLine();
     
             Medicamento novoMedicamento = new Medicamento(nome, quantidade, dataValidade, descricao, preco, tipo);
             listaMedicamentos.add(novoMedicamento);
     
             System.out.println("Medicamento cadastrado com sucesso! Pretende cadastrar novo medicamento ?");
-            System.out.println("1 - N√£o");
+            System.out.println("1 - Nao");
             System.out.println("2 - Sim, continuar cadastro de medicamentos");
             System.out.println("3 - Voltar para menu principal");
     
@@ -58,38 +62,72 @@ public class GerirMedicamentos {
                     break;
                 case 3:
                     menuController.exibirMenuPrincipal(); // Chama o menu principal
-                    return; // Retorna ap√≥s exibir o menu principal
+                    return; 
                 default:
-                    System.out.println("Escolha inv√°lida, encerrando cadastro de medicamentos!");
+                    System.out.println("Escolha inv·lida, encerrando cadastro de medicamentos!");
                     continuarCadastro = false;
                     break;
             }
         }
     }
 
+    public void mostrarTodosMedicamentos() {
+        if (listaMedicamentos.isEmpty()) {
+            System.out.println("N„o h· medicamentos cadastrados.");
+        } else {
+            System.out.println("Detalhes de todos os medicamentos cadastrados:");
+            for (Medicamento medicamento : listaMedicamentos) {
+                System.out.println("ID: " + medicamento.getId()); 
+                System.out.println("Nome: " + medicamento.getNome());
+                System.out.println("Quantidade em Estoque: " + medicamento.getQuantidade());
+                System.out.println("Data de Validade: " + medicamento.getDataValidade().format(formatter));
+                System.out.println("DescriÁ„o: " + medicamento.getDescricao());
+                System.out.println("PreÁo: " + medicamento.getPreco());
+                System.out.println("Tipo: " + medicamento.getTipo());
+                System.out.println("--------------------------------------");
+            }
+        }
+    }
+
+    /**
+     * @param medicamento
+     * @param quantidadeAVender
+     */
     public void vender(Medicamento medicamento, int quantidadeAVender) {
         if (quantidadeAVender <= medicamento.getQuantidade() && quantidadeAVender > 0) {
             medicamento.setQuantidade(medicamento.getQuantidade() - quantidadeAVender);
             System.out.println(quantidadeAVender + " unidades de " + medicamento.getNome() + " vendidas.");
         } else {
-            System.out.println("Quantidade inv√°lida para venda.");
+            System.out.println("Quantidade inv·lida para venda.");
         }
     }
 
-    public void mostrarTodosMedicamentos() {
+    public void mostrarListaVenda() {
         if (listaMedicamentos.isEmpty()) {
-            System.out.println("N√£o h√° medicamentos cadastrados.");
+            System.out.println("N√O H¡ MEDICAMENTOS CADASTRADOS.");
         } else {
-            System.out.println("Detalhes de todos os medicamentos:");
+            System.out.println("Lista de Medicamentos DisponÌveis para Venda:");
             for (Medicamento medicamento : listaMedicamentos) {
-                System.out.println("Nome do medicamento: " + medicamento.getNome());
-                System.out.println("Quantidade em estoque: " + medicamento.getQuantidade());
-                System.out.println("Data de validade: " + medicamento.getDataValidade().format(formatter));
-                System.out.println("Pre√ßo: " + medicamento.getPreco());
-                System.out.println("Descri√ß√£o do medicamento: " + medicamento.getDescricao());
-                System.out.println("Tipo de medicamento: " + medicamento.getTipo());
-                System.out.println("---------------");
+                System.out.println("ID " + medicamento.getId() + " - " + medicamento.getNome());
             }
         }
     }
+    
+    public void registrarVenda(UUID idMedicamento, int quantidadeAVender) {
+        Medicamento medicamentoParaVenda = null;
+        for (Medicamento medicamento : listaMedicamentos) {
+            if (medicamento.getId().equals(idMedicamento)) {
+                medicamentoParaVenda = medicamento;
+                break;
+            }
+        }
+    
+        if (medicamentoParaVenda != null) {
+            vender(medicamentoParaVenda, quantidadeAVender);
+        } else {
+            System.out.println("MEDICAMENTO N√O ENCONTRADO.");
+        }
+    }
+    
+    
 }
