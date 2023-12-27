@@ -132,5 +132,14 @@ public class GerirMedicamentos {
         }
     }
     
-    
+    public void gerarRelatorio() {
+        System.out.println("Relatório de Medicamentos:\n");
+        for (Medicamento medicamento : listaMedicamentos) {
+            System.out.println("Nome: " + medicamento.getNome());
+            System.out.println("Quantidade: " + medicamento.getQuantidade());
+            System.out.println("Preço: " + medicamento.getPreco());
+            System.out.println("------------------------------------");
+        }
+    }
+
 }

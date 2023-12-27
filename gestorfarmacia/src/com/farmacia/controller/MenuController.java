@@ -57,11 +57,9 @@ public class MenuController {
                     exibirMenuMedicamentos(); // Opção para gerir medicamentos
                     break;
                 case 3:
-                    // Lógica para Relatório de Vendas
                     System.out.println("Escolheu Relatório de Vendas.");
                     break;
                 case 8:
-                    // Lógica para Obter número total de vendas
                     System.out.println("Escolheu Obter número total de vendas.");
                     break;
                 case 9:
@@ -123,6 +121,7 @@ public class MenuController {
             System.out.println("1. Cadastrar Novo Medicamento");
             System.out.println("2. Mostrar Todos os Medicamentos");
             System.out.println("3. Vender Medicamento");
+            System.out.println("4. Mostrar relat�rio de medicamentos");
             System.out.println("0. Voltar para o Menu Principal");
             System.out.print("Escolha uma opção: ");
         }
