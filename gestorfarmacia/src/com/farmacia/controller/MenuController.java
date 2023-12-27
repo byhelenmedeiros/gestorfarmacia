@@ -24,7 +24,7 @@ public class MenuController {
                     case 1:
                 System.out.println("Escolheu Registrar Venda.");
                 if (gerirMedicamentos.listaMedicamentos.isEmpty()) {
-                    System.out.println("Não há medicamentos para venda. Por favor, cadastre novos medicamentos.");
+                    System.out.println("Nao tem medicamentos para venda. Por favor, cadastre novos medicamentos.");
                     gerirMedicamentos.cadastroMedicamento();
                 } else {
                     boolean vendaConcluida = false;
@@ -41,10 +41,10 @@ public class MenuController {
                                 System.out.print("Quantidade para vender: ");
                             int quantidadeAVender = Integer.parseInt(scanner.nextLine());
                             gerirMedicamentos.registrarVenda(med.getId(), quantidadeAVender);
-                            System.out.println("Venda concluída!");
+                            System.out.println("Venda conclu��da!");
                             vendaConcluida = true;
                                 } else {
-                                    System.out.println("Opção inválida. Tente novamente.");
+                                    System.out.println("Opcao escolhida � invalida. Tente novamente.");
                                 }
                             } else {
                                 System.out.println("Entrada inválida. Tente novamente.");
