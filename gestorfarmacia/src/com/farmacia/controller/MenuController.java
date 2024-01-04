@@ -1,6 +1,5 @@
 
 import java.util.Scanner;
-import java.util.UUID;
 
 import com.farmacia.model.Medicamento;
 
