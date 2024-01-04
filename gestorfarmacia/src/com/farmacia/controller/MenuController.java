@@ -2,6 +2,7 @@
 import java.util.Scanner;
 
 import com.farmacia.model.Medicamento;
+import com.farmacia.model.Funcionarios;
 
 public class MenuController {
     private Scanner scanner;
@@ -58,6 +59,10 @@ public class MenuController {
                 case 3:
                     System.out.println("Escolheu Relatório de Vendas.");
                     break;
+                case 4:
+                    System.out.println("Voc� escolheu gerir funcionarios.");
+                        GerirFuncionarios();
+                    break;
                 case 8:
                     System.out.println("Escolheu Obter número total de vendas.");
                     break;
@@ -76,7 +81,10 @@ public class MenuController {
 
 
 
-     private void exibirMenuMedicamentos() {
+     private void GerirFuncionarios() {
+    }
+
+    private void exibirMenuMedicamentos() {
         int opcao;
     
         do {
@@ -85,10 +93,10 @@ public class MenuController {
     
             switch (opcao) {
                 case 1:
-                    gerirMedicamentos.cadastroMedicamento(); // Opção para cadastrar medicamento
+                        gerirMedicamentos.cadastroMedicamento(); // Opção para cadastrar medicamento
                     break;
                 case 2:
-                    gerirMedicamentos.mostrarTodosMedicamentos(); // Opção para mostrar todos os medicamentos
+                        gerirMedicamentos.mostrarTodosMedicamentos(); // Opção para mostrar todos os medicamentos
                     break;
                 case 3:
                     System.out.println("Escolheu Vender Medicamento.");
@@ -109,7 +117,8 @@ public class MenuController {
         System.out.println("---- MENU PRINCIPAL ----");
         System.out.println("1. Registrar Venda");
         System.out.println("2. Gerir Medicamentos");
-        System.out.println("3. Relatório de Vendas");
+        System.out.println("3. Relatorio de Vendas");
+        System.out.println("4. Gerir Funcionarios");
         System.out.println("8. Obter número total de vendas");
         System.out.println("0. Sair");
         System.out.print("Escolha uma opção: ");
