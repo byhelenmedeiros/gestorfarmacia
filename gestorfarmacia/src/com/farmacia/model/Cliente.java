@@ -1,5 +1,7 @@
 package com.farmacia.model;
 
+import java.time.LocalDate;
+
 public class Cliente {
     private static int contadorClientes = 1;
 
@@ -65,8 +67,8 @@ public class Cliente {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setDataNascimento(LocalDate novaDataNascimento) {
+        this.dataNascimento = novaDataNascimento;
     }
 
     public String getEmail() {

@@ -9,11 +9,10 @@ public class MenuController {
 
     public MenuController() {
         this.scanner = new Scanner(System.in);
+        this.sessao = new Sessao();  // Mova a inicialização da Sessao para antes do VendaController
         this.gerirMedicamentos = new GerirMedicamentos(this);
         this.gerirClientes = new GerirClientes(this);
-        this.vendaController = new VendaController();
-        this.sessao = new Sessao();
-
+        this.vendaController = new VendaController(gerirMedicamentos, gerirClientes, sessao);
     }
 
     public void exibirMenuPrincipal() {

@@ -8,13 +8,10 @@ public class Venda {
     private List<Medicamento> medicamentosVendidos;
     private LocalDateTime dataHora;
     private double valorTotal;
-    private String formaPagamento;
-
     public Venda(Cliente cliente, List<Medicamento> medicamentosVendidos, double valorTotal, String formaPagamento) {
         this.cliente = cliente;
         this.medicamentosVendidos = medicamentosVendidos;
         this.dataHora = LocalDateTime.now();
         this.valorTotal = valorTotal;
-        this.formaPagamento = formaPagamento;
     }
 }
