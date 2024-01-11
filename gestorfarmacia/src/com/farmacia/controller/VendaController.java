@@ -1,5 +1,7 @@
 import com.farmacia.model.Cliente;
 import com.farmacia.model.Medicamento;
+import com.farmacia.model.Sessao;
+
 import java.util.Scanner;
 
 public class VendaController {
@@ -22,7 +24,7 @@ public class VendaController {
         Cliente cliente = gerirClientes.buscarClientePorNIF(nifCliente);
 
         if (cliente == null) {
-            System.out.println("Cliente não encontrado.");
+            System.out.println("Cliente nï¿½o encontrado.");
 
             // Pergunta se deseja cadastrar um novo cliente
             System.out.print("Deseja cadastrar um novo cliente? (S/N): ");
@@ -44,13 +46,13 @@ public class VendaController {
 
         mostrarListaMedicamentos();
 
-        System.out.print("\nDigite o número do medicamento para venda (ou 0 para cancelar): ");
+        System.out.print("\nDigite o nï¿½mero do medicamento para venda (ou 0 para cancelar): ");
         int opcaoVenda;
 
         try {
             opcaoVenda = Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("Opção inválida. Venda cancelada.");
+            System.out.println("Opï¿½ï¿½o invï¿½lida. Venda cancelada.");
             scanner.close();
             return;
         }
@@ -72,13 +74,13 @@ public class VendaController {
         } else if (opcaoVenda == 0) {
             System.out.println("Venda cancelada.");
         } else {
-            System.out.println("Opção inválida. Venda cancelada.");
+            System.out.println("Opï¿½ï¿½o invï¿½lida. Venda cancelada.");
             scanner.close();
         }
     }
 
     private void mostrarListaMedicamentos() {
-        System.out.println("\nMedicamentos Disponíveis para Venda:");
+        System.out.println("\nMedicamentos Disponï¿½veis para Venda:");
         int numeroMedicamento = 1;
         for (Medicamento med : gerirMedicamentos.listaMedicamentos) {
             System.out.println(numeroMedicamento + ". " + med.getNome());
@@ -88,7 +90,7 @@ public class VendaController {
 
     private void processarVenda(Scanner scanner, Cliente cliente, Medicamento medicamento) {
         double precoTotal = medicamento.getPreco();
-        System.out.println("\nPreço total da venda: ?" + precoTotal);
+        System.out.println("\nPreï¿½o total da venda: ?" + precoTotal);
 
         System.out.print("Forma de pagamento (Multibanco/Dinheiro): ");
         String formaPagamento = scanner.nextLine();
@@ -101,14 +103,14 @@ public class VendaController {
                 System.out.println("Valor menor que o do medicamento. Venda cancelada.");
             } else {
                 double troco = valorPago - precoTotal;
-                System.out.println("Venda concluída para o cliente " + cliente.getNome() + ".");
+                System.out.println("Venda concluï¿½da para o cliente " + cliente.getNome() + ".");
                 System.out.println("Troco: ?" + troco);
             }
         } else if (formaPagamento.equalsIgnoreCase("Multibanco")) {
-            System.out.println("Insira o cartão no leitor.");
-            System.out.println("Compra concluída.");
+            System.out.println("Insira o cartï¿½o no leitor.");
+            System.out.println("Compra concluï¿½da.");
         } else {
-            System.out.println("Forma de pagamento inválida. Venda cancelada.");
+            System.out.println("Forma de pagamento invï¿½lida. Venda cancelada.");
         }
     }
 }

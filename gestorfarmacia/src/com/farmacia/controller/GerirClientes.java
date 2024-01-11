@@ -9,12 +9,12 @@ import com.farmacia.model.Cliente;
 public class GerirClientes {
     private ArrayList<Cliente> clientes;
     private Scanner scanner;
-    private MenuController menuController;  // Adicione um campo para armazenar o MenuController
+    private MenuController menuController;  
 
     public GerirClientes(MenuController menuController) {
         this.clientes = new ArrayList<>();
         this.scanner = new Scanner(System.in);
-        this.menuController = menuController;  // Atribua a instância de MenuController
+        this.menuController = menuController; 
 
         adicionarClienteExemplo("Mariana Silva", "299955874", "987654321", "Rua Silva Junior, 123", LocalDate.of(1980, 1, 1), "joao.silva@gmail.com", "1234567890");
         adicionarClienteExemplo("Maria Souza", "987654321", "914333546", "Avenida Principal, 456", LocalDate.of(1985, 5, 10), "maria.souza@gmail.com", "9876543210");
@@ -33,7 +33,7 @@ public class GerirClientes {
         System.out.println("3. Buscar cliente pelo NIF");
         System.out.println("4. Alterar dados do cliente");
         System.out.println("0. Sair");
-        System.out.print("Escolha uma opção: ");
+        System.out.print("Escolha uma opï¿½ï¿½o: ");
     }
 
     public void exibirSubMenuClientes() {
@@ -54,14 +54,14 @@ public class GerirClientes {
                     System.out.println("Voltando para o Menu Principal.");
                     return;
                 default:
-                    System.out.println("Opção inválida. Escolha novamente.");
+                    System.out.println("Opï¿½ï¿½o invï¿½lida. Escolha novamente.");
             }
         } while (opcao != 0);
     }
 
     private int receberOpcaoSubMenuClientes() {
         while (!scanner.hasNextInt()) {
-            System.out.println("Por favor, digite um número válido.");
+            System.out.println("Por favor, digite um nï¿½mero vï¿½lido.");
             scanner.next();
         }
         return scanner.nextInt();
@@ -97,15 +97,15 @@ public class GerirClientes {
             System.out.println("Morada: " + cliente.getMorada());
             System.out.println("Data de Nascimento: " + cliente.getDataNascimento().format(formatter));
             System.out.println("Email: " + cliente.getEmail());
-            System.out.println("Cartão de Cliente: " + cliente.getCartaoCliente());
+            System.out.println("Cartï¿½o de Cliente: " + cliente.getCartaoCliente());
             System.out.println("Pontos de Fidelidade: " + cliente.getPontosFidelidade());
 
-            // Menu de opções
-            System.out.println("\nOpções:");
+            // Menu de opï¿½ï¿½es
+            System.out.println("\nOpï¿½ï¿½es:");
             System.out.println("1 - Remover Cliente");
             System.out.println("2 - Atualizar Dados do Cliente");
             System.out.println("3 - Voltar ao Menu Principal");
-            System.out.print("Escolha uma opção: ");
+            System.out.print("Escolha uma opï¿½ï¿½o: ");
 
             int escolha = scanner.nextInt();
             scanner.nextLine();
@@ -121,10 +121,10 @@ public class GerirClientes {
                     System.out.println("Voltando ao Menu Principal.");
                     break;
                 default:
-                    System.out.println("Opção inválida!");
+                    System.out.println("Opï¿½ï¿½o invï¿½lida!");
             }
         } else {
-            System.out.println("Cliente não encontrado.");
+            System.out.println("Cliente nï¿½o encontrado.");
         }
     }
 
@@ -136,7 +136,7 @@ public class GerirClientes {
             clientes.remove(cliente);
             System.out.println("Cliente removido com sucesso.");
         } else {
-            System.out.println("Remoção cancelada.");
+            System.out.println("Remoï¿½ï¿½o cancelada.");
         }
     }
 
@@ -253,14 +253,14 @@ public class GerirClientes {
         String nif = scanner.nextLine();
 
         if (!validarFormatoNIF(nif)) {
-            System.out.println("Formato de NIF inválido. O NIF deve ter exatamente 9 dígitos.");
+            System.out.println("Formato de NIF invï¿½lido. O NIF deve ter exatamente 9 dï¿½gitos.");
             return null;
         }
 
-        System.out.print("Telefone (9 dígitos, começando com 9): ");
+        System.out.print("Telefone (9 dï¿½gitos, comeï¿½ando com 9): ");
         String telefone = scanner.nextLine();
         if (!telefone.matches("9\\d{8}")) {
-            System.out.println("Número de telefone inválido. Deve ter 9 dígitos e começar com 9.");
+            System.out.println("Nï¿½mero de telefone invï¿½lido. Deve ter 9 dï¿½gitos e comeï¿½ar com 9.");
             return null;
         }
 
@@ -274,7 +274,7 @@ public class GerirClientes {
         System.out.print("Email: ");
         String email = scanner.nextLine();
 
-        System.out.print("Cartão de cliente: ");
+        System.out.print("Cartï¿½o de cliente: ");
         String cartaoCliente = scanner.nextLine();
 
         Cliente novoCliente = new Cliente(nomeCompleto, nif, telefone, morada, dataNascimento, email, cartaoCliente);
@@ -288,7 +288,7 @@ public class GerirClientes {
     
 
     private boolean validarFormatoNIF(String nif) {
-        // Verifica se o NIF tem  9 dígitos
+        // Verifica se o NIF tem  9 dï¿½gitos
         return nif.matches("\\d{9}");
     }
 

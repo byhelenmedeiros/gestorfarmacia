@@ -1,5 +1,5 @@
-import com.farmacia.model.Cliente;
-import com.farmacia.model.Medicamento;
+package com.farmacia.model;
+
 
 public class Sessao {
         private Cliente clienteAtual;
