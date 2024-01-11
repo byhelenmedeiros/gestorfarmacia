@@ -7,10 +7,14 @@ import com.farmacia.model.Funcionarios;
 public class MenuController {
     private Scanner scanner;
     private GerirMedicamentos gerirMedicamentos;
+    private GerirClientes gerirClientes;
+
 
     public MenuController() {
         this.scanner = new Scanner(System.in);
-        this.gerirMedicamentos = new GerirMedicamentos(this); // Passando a referÃªncia do MenuController
+        this.gerirMedicamentos = new GerirMedicamentos(this); 
+        this.gerirClientes = new GerirClientes(this); 
+
     }
 
     public void exibirMenuPrincipal() {
@@ -63,6 +67,9 @@ public class MenuController {
                     System.out.println("Você escolheu gerir funcionarios.");
                         GerirFuncionarios();
                     break;
+                case 5:
+                    exibirMenuClientes();
+                    break;
                 case 8:
                     System.out.println("Escolheu Obter nÃºmero total de vendas.");
                     break;
@@ -81,7 +88,51 @@ public class MenuController {
 
 
 
-     private void GerirFuncionarios() {
+    private void exibirMenuClientes() {
+        int opcao;
+
+        do {
+            mostrarSubMenuClientes();
+            opcao = receberOpcaoSubMenuClientes();
+
+            switch (opcao) {
+                case 1:
+                    gerirClientes.cadastroCliente();
+                    break;
+                case 2:
+                    gerirClientes.mostrarTodosClientes();
+                    break;
+                
+                case 0:
+                    System.out.println("Voltando para o Menu Principal.");
+                    return;
+                default:
+                    System.out.println("Opção inválida. Escolha novamente.");
+            }
+        } while (opcao != 0);
+    }
+
+            private void mostrarSubMenuClientes() {
+                System.out.println("------ GESTAO DE CLIENTES ------");
+                System.out.println("1. Cadastrar Novo Cliente");
+                System.out.println("2. Mostrar Todos os Clientes");
+                System.out.println("0. Voltar para o Menu Principal");
+                System.out.print("Escolha uma opção: ");
+            }
+
+            private int receberOpcaoSubMenuClientes() {
+                while (true) {
+                    int opcao = scanner.nextInt();
+                    if (opcao >= 0 && opcao <= 2) { 
+                        return opcao;
+                    } else {
+                        System.out.println("Opção inválida. Escolha novamente.");
+                    }
+                }
+            }
+        
+
+    private void GerirFuncionarios() {
     }
 
     private void exibirMenuMedicamentos() {
@@ -119,6 +170,7 @@ public class MenuController {
         System.out.println("2. Gerir Medicamentos");
         System.out.println("3. Relatorio de Vendas");
         System.out.println("4. Gerir Funcionarios");
+        System.out.println("5. Gerir Clientes"); 
         System.out.println("8. Obter nÃºmero total de vendas");
         System.out.println("0. Sair");
         System.out.print("Escolha uma opÃ§Ã£o: ");
@@ -131,7 +183,7 @@ public class MenuController {
             System.out.println("3. Vender Medicamento");
             System.out.println("4. Mostrar relatório de medicamentos");
             System.out.println("0. Voltar para o Menu Principal");
-            System.out.print("Escolha uma opÃ§Ã£o: ");
+            System.out.print("Escolha uma opcao: ");
         }
 
     private int receberOpcao() {
@@ -148,7 +200,7 @@ public class MenuController {
             if (opcao >= 0 && opcao <= 3) {
                 return opcao;
             } else {
-                System.out.println("OpÃ§Ã£o invÃ¡lida. Escolha novamente.");
+                System.out.println("Opcao invÃ¡lida. Escolha novamente.");
             }
         }
     }
