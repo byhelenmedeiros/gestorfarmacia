@@ -1,5 +1,3 @@
-
-
 import java.util.UUID;
 import com.farmacia.model.Medicamento;
 import java.time.LocalDate;
@@ -12,18 +10,17 @@ public class GerirMedicamentos {
     List<Medicamento> listaMedicamentos;
     private Scanner scanner;
     private DateTimeFormatter formatter;
-    private MenuController menuController; 
-
-    listaMedicamentos.add(new Medicamento("Paracetamol", 100, LocalDate.parse("01/01/2023", formatter), "Analgésico", 10.5, "Comprimido"));
-    listaMedicamentos.add(new Medicamento("Ibuprofeno", 50, LocalDate.parse("01/01/2023", formatter), "Anti-inflamatório", 15.75, "Comprimido"));
-    listaMedicamentos.add(new Medicamento("Dipirona", 75, LocalDate.parse("01/01/2023", formatter), "Analgésico", 8.2, "Gotas"));
-
+    private MenuController menuController;
 
     public GerirMedicamentos(MenuController menuController) {
         this.listaMedicamentos = new ArrayList<>();
         this.scanner = new Scanner(System.in);
         this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        this.menuController = menuController; 
+        this.menuController = menuController;
+
+        listaMedicamentos.add(new Medicamento("Paracetamol", 100, LocalDate.parse("01/01/2023", formatter), "Analgésico", 10.5, "Comprimido"));
+        listaMedicamentos.add(new Medicamento("Ibuprofeno", 50, LocalDate.parse("01/01/2023", formatter), "Anti-inflamatório", 15.75, "Comprimido"));
+        listaMedicamentos.add(new Medicamento("Dipirona", 75, LocalDate.parse("01/01/2023", formatter), "Analgésico", 8.2, "Gotas"));
     }
 
     public void exibirSubMenuMedicamentos() {
@@ -31,7 +28,7 @@ public class GerirMedicamentos {
 
         do {
             mostrarSubMenuMedicamentos();
-            opcao = receberOpcaoSubMenu();
+            opcao = menuController.receberOpcaoSubMenu();
 
             switch (opcao) {
                 case 1:
@@ -50,14 +47,23 @@ public class GerirMedicamentos {
                     System.out.println("Voltando para o Menu Principal.");
                     return;
                 default:
-                    System.out.println("OpÃ§Ã£o invÃ¡lida. Escolha novamente.");
+                    System.out.println("Opção inválida. Escolha novamente.");
             }
         } while (opcao != 0);
     }
+    
 
-    /**
-     * 
-     */
+
+    public void mostrarSubMenuMedicamentos() {
+        System.out.println("------ Submenu Medicamentos ------");
+        System.out.println("1. Cadastrar Medicamento");
+        System.out.println("2. Mostrar Todos os Medicamentos");
+        System.out.println("3. Realizar Venda");
+        System.out.println("4. Gerar Relatório");
+        System.out.println("0. Voltar para o Menu Principal");
+        System.out.print("Escolha uma opção: ");
+    }
+    
     public void cadastroMedicamento() {
         boolean continuarCadastro = true;
 

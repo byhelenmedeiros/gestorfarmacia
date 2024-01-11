@@ -15,7 +15,7 @@ public class VendaController {
     }
 
     public void realizarVenda() {
-        sessao.setClienteAtual(cliente);
+        sessao.setClienteAtual(clienteAtual);
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Digite o NIF do cliente (ou deixe em branco para cadastrar um novo): ");
