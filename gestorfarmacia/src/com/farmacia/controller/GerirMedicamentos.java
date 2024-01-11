@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GerirMedicamentos {
-    private List<Medicamento> listaMedicamentos;
+    List<Medicamento> listaMedicamentos;
     private Scanner scanner;
     private DateTimeFormatter formatter;
     private MenuController menuController;
@@ -39,7 +39,7 @@ public class GerirMedicamentos {
                     mostrarTodosMedicamentos();
                     break;
                 case 3:
-                    realizarVenda();
+                    VendaController.realizarVenda();
                     break;
                 case 4:
                     gerarRelatorio();
@@ -143,10 +143,6 @@ public class GerirMedicamentos {
                 System.out.println("--------------------------------------");
             }
         }
-    }
-
-    public void realizarVenda() {
-        
     }
 
     public void gerarRelatorio() {

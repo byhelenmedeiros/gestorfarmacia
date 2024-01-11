@@ -137,7 +137,7 @@ public class GerirClientes {
         return null;
     }
 
-    public void cadastroCliente() {
+    public Cliente cadastroCliente() {
     }
 
     public void mostrarTodosClientes() {
