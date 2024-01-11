@@ -5,12 +5,15 @@ public class MenuController {
     private GerirMedicamentos gerirMedicamentos;
     private GerirClientes gerirClientes;
     private VendaController vendaController;
+    private Sessao sessao; 
 
     public MenuController() {
         this.scanner = new Scanner(System.in);
         this.gerirMedicamentos = new GerirMedicamentos(this);
         this.gerirClientes = new GerirClientes(this);
         this.vendaController = new VendaController();
+        this.sessao = new Sessao();
+
     }
 
     public void exibirMenuPrincipal() {

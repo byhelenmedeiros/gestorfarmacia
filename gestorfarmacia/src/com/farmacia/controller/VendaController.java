@@ -5,13 +5,17 @@ import java.util.Scanner;
 public class VendaController {
     private GerirMedicamentos gerirMedicamentos;
     private GerirClientes gerirClientes;
+    private Sessao sessao; 
 
     public VendaController(GerirMedicamentos gerirMedicamentos, GerirClientes gerirClientes) {
         this.gerirMedicamentos = gerirMedicamentos;
         this.gerirClientes = gerirClientes;
+        this.sessao = sessao; // Injeta a instância de Sessao
+
     }
 
     public void realizarVenda() {
+        sessao.setClienteAtual(cliente);
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Digite o NIF do cliente (ou deixe em branco para cadastrar um novo): ");
@@ -82,6 +86,8 @@ public class VendaController {
              scanner.close();
         }
         
+
+        
     }
 
     private void mostrarListaMedicamentos() {
@@ -91,5 +97,10 @@ public class VendaController {
             numeroMedicamento++;
         }
     }
+
+    Cliente clienteAtual = sessao.getClienteAtual();
     
 }
+
+
+
