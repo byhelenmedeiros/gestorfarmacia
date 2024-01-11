@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GerirMedicamentos {
-    List<Medicamento> listaMedicamentos;
+    private List<Medicamento> listaMedicamentos;
     private Scanner scanner;
     private DateTimeFormatter formatter;
     private MenuController menuController;
@@ -23,12 +23,13 @@ public class GerirMedicamentos {
         listaMedicamentos.add(new Medicamento("Dipirona", 75, LocalDate.parse("01/01/2023", formatter), "Analgésico", 8.2, "Gotas"));
     }
 
-    public void exibirSubMenuMedicamentos() {
+      public void exibirSubMenuMedicamentos() {
         int opcao;
 
+        mostrarMenu();
+
         do {
-            mostrarSubMenuMedicamentos();
-            opcao = menuController.receberOpcaoSubMenu();
+            opcao = receberOpcaoSubMenu();
 
             switch (opcao) {
                 case 1:
@@ -45,16 +46,16 @@ public class GerirMedicamentos {
                     break;
                 case 0:
                     System.out.println("Voltando para o Menu Principal.");
-                    return;
+                    break;
                 default:
                     System.out.println("Opção inválida. Escolha novamente.");
             }
         } while (opcao != 0);
+
+        scanner.close();
     }
-    
 
-
-    public void mostrarSubMenuMedicamentos() {
+    private void mostrarMenu() {
         System.out.println("------ Submenu Medicamentos ------");
         System.out.println("1. Cadastrar Medicamento");
         System.out.println("2. Mostrar Todos os Medicamentos");
@@ -63,36 +64,51 @@ public class GerirMedicamentos {
         System.out.println("0. Voltar para o Menu Principal");
         System.out.print("Escolha uma opção: ");
     }
-    
+
+    private int receberOpcaoSubMenu() {
+        while (true) {
+            try {
+                int opcao = Integer.parseInt(scanner.nextLine());
+                if (opcao >= 0 && opcao <= 4) {
+                    return opcao;
+                } else {
+                    System.out.println("Opção inválida. Escolha novamente.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, insira um número válido.");
+            }
+        }
+    }
+
     public void cadastroMedicamento() {
         boolean continuarCadastro = true;
 
         while (continuarCadastro) {
             System.out.println("------Cadastro de novos medicamentos------");
-                System.out.println("Nome do Medicamento: ");
-                    String nome = scanner.nextLine();
-            System.out.println("Quantidade: ");
-                int quantidade = Integer.parseInt(scanner.nextLine());
-            System.out.println("Data de Validade (dd/MM/yyyy): ");
-                String dataValidadeStr = scanner.nextLine();
-                    LocalDate dataValidade = LocalDate.parse(dataValidadeStr, formatter);
-            System.out.println("Descrição do medicamento: ");
+            System.out.print("Nome do Medicamento: ");
+            String nome = scanner.nextLine();
+            System.out.print("Quantidade: ");
+            int quantidade = Integer.parseInt(scanner.nextLine());
+            System.out.print("Data de Validade (dd/MM/yyyy): ");
+            String dataValidadeStr = scanner.nextLine();
+            LocalDate dataValidade = LocalDate.parse(dataValidadeStr, formatter);
+            System.out.print("Descrição do medicamento: ");
             String descricao = scanner.nextLine();
-            System.out.println("Preço: ");
-                double preco = Double.parseDouble(scanner.nextLine());
-            System.out.println("Tipo de medicamento: ");
-                String tipo = scanner.nextLine();
-    
+            System.out.print("Preço: ");
+            double preco = Double.parseDouble(scanner.nextLine());
+            System.out.print("Tipo de medicamento: ");
+            String tipo = scanner.nextLine();
+
             Medicamento novoMedicamento = new Medicamento(nome, quantidade, dataValidade, descricao, preco, tipo);
             listaMedicamentos.add(novoMedicamento);
-    
-            System.out.println("Medicamento cadastrado com sucesso! Pretende cadastrar novo medicamento ?");
-            System.out.println("1 - Nao");
+
+            System.out.println("Medicamento cadastrado com sucesso! Deseja cadastrar outro medicamento?");
+            System.out.println("1 - Não");
             System.out.println("2 - Sim, continuar cadastro de medicamentos");
             System.out.println("3 - Voltar para menu principal");
-    
+
             int escolha = Integer.parseInt(scanner.nextLine());
-    
+
             switch (escolha) {
                 case 1:
                     continuarCadastro = false;
@@ -102,7 +118,7 @@ public class GerirMedicamentos {
                     break;
                 case 3:
                     menuController.exibirMenuPrincipal(); // Chama o menu principal
-                    return; 
+                    return;
                 default:
                     System.out.println("Escolha inválida, encerrando cadastro de medicamentos!");
                     continuarCadastro = false;
@@ -117,61 +133,22 @@ public class GerirMedicamentos {
         } else {
             System.out.println("Detalhes de todos os medicamentos cadastrados:");
             for (Medicamento medicamento : listaMedicamentos) {
-                System.out.println("ID: " + medicamento.getId()); 
+                System.out.println("ID: " + medicamento.getId());
                 System.out.println("Nome: " + medicamento.getNome());
                 System.out.println("Quantidade em Estoque: " + medicamento.getQuantidade());
                 System.out.println("Data de Validade: " + medicamento.getDataValidade().format(formatter));
                 System.out.println("Descrição: " + medicamento.getDescricao());
-                System.out.println("Preço: ?" + medicamento.getPreco()); 
+                System.out.println("Preço: ?" + medicamento.getPreco());
                 System.out.println("Tipo: " + medicamento.getTipo());
                 System.out.println("--------------------------------------");
             }
         }
     }
 
-    /**
-     * @param medicamento
-     * @param quantidadeAVender
-     */
-    public void vender(Medicamento medicamento, int quantidadeAVender) {
-        if (quantidadeAVender <= medicamento.getQuantidade() && quantidadeAVender > 0) {
-            medicamento.setQuantidade(medicamento.getQuantidade() - quantidadeAVender);
-            System.out.println(quantidadeAVender + " unidades de " + medicamento.getNome() + " vendidas.");
-        } else {
-            System.out.println("Quantidade inválida para venda.");
-        }
+    public void realizarVenda() {
+        
     }
 
-    public void mostrarListaVenda() {
-        if (listaMedicamentos.isEmpty()) {
-            System.out.println("NÃO HÁ MEDICAMENTOS CADASTRADOS.");
-        } else {
-            System.out.println("Lista de Medicamentos Disponíveis para Venda:");
-            for (int i = 0; i < listaMedicamentos.size(); i++) {
-                Medicamento medicamento = listaMedicamentos.get(i);
-                System.out.println((i + 1) + ". " + medicamento.getNome() + " - Quantidade: " + medicamento.getQuantidade());
-            }
-        }
-    }
-    
-    
-    
-    public void registrarVenda(UUID idMedicamento, int quantidadeAVender) {
-        Medicamento medicamentoParaVenda = null;
-        for (Medicamento medicamento : listaMedicamentos) {
-            if (medicamento.getId().equals(idMedicamento)) {
-                medicamentoParaVenda = medicamento;
-                break;
-            }
-        }
-    
-        if (medicamentoParaVenda != null) {
-            vender(medicamentoParaVenda, quantidadeAVender);
-        } else {
-            System.out.println("MEDICAMENTO NÃO ENCONTRADO.");
-        }
-    }
-    
     public void gerarRelatorio() {
         System.out.println("Relatório de Medicamentos:\n");
         for (Medicamento medicamento : listaMedicamentos) {
@@ -181,5 +158,4 @@ public class GerirMedicamentos {
             System.out.println("------------------------------------");
         }
     }
-
 }
