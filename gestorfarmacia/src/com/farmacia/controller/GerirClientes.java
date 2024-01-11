@@ -3,6 +3,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 import com.farmacia.model.Cliente;
 
 public class GerirClientes {
@@ -15,18 +16,22 @@ public class GerirClientes {
         this.scanner = new Scanner(System.in);
         this.menuController = menuController;  // Atribua a instância de MenuController
 
-        // Exemplo de cliente
-        Cliente exemploCliente = new Cliente("Mariana Silva", "123456789", "987654321", "Rua Exemplo, 123", "01/01/1980", "joao.silva@email.com", "1234567890");
-        clientes.add(exemploCliente);
+        adicionarClienteExemplo("Mariana Silva", "299955874", "987654321", "Rua Silva Junior, 123", LocalDate.of(1980, 1, 1), "joao.silva@gmail.com", "1234567890");
+        adicionarClienteExemplo("Maria Souza", "987654321", "914333546", "Avenida Principal, 456", LocalDate.of(1985, 5, 10), "maria.souza@gmail.com", "9876543210");
+        
     }
 
-    
-    private void   mostrarSubMenuClientes() {
+    private void adicionarClienteExemplo(String nome, String nif, String telefone, String morada, LocalDate dataNascimento, String email, String cartaoCliente) {
+        Cliente novoCliente = new Cliente(nome, nif, telefone, morada, dataNascimento, email, cartaoCliente);
+        clientes.add(novoCliente);
+    }
+
+    private void mostrarSubMenuClientes() {
         System.out.println("---- MENU GERIR CLIENTES ----");
         System.out.println("1. Cadastrar novo cliente");
         System.out.println("2. Exibir lista de clientes");
         System.out.println("3. Buscar cliente pelo NIF");
-        System.out.println("8. Obter número total de vendas");
+        System.out.println("4. Alterar dados do cliente");
         System.out.println("0. Sair");
         System.out.print("Escolha uma opção: ");
     }
@@ -43,7 +48,7 @@ public class GerirClientes {
                     cadastroCliente();
                     break;
                 case 2:
-                    mostrarTodosClientes();
+                    listarClientesResumido();
                     break;
                 case 0:
                     System.out.println("Voltando para o Menu Principal.");
@@ -136,21 +141,21 @@ public class GerirClientes {
     }
 
     private void atualizarCliente(Cliente cliente) {
-        System.out.println("Atualização de dados do cliente:");
+        System.out.println("Atualiza??o de dados do cliente:");
 
-        // Exibir opções de atualização
-        System.out.println("Escolha uma opção para atualizar:");
+        // Exibir op??es de atualiza??o
+        System.out.println("Escolha uma op??o para atualizar:");
         System.out.println("1. Nome");
         System.out.println("2. NIF");
         System.out.println("3. Telefone");
         System.out.println("4. Morada");
         System.out.println("5. Data de Nascimento");
         System.out.println("6. Email");
-        System.out.println("7. Cartão de Cliente");
+        System.out.println("7. Cart?o de Cliente");
         System.out.println("8. Pontos de Fidelidade");
         System.out.println("0. Sair");
 
-        System.out.print("Escolha uma opção: ");
+        System.out.print("Escolha uma op??o: ");
         int escolha = scanner.nextInt();
         scanner.nextLine(); // Consumir a quebra de linha
 
@@ -168,7 +173,7 @@ public class GerirClientes {
                     cliente.setNif(novoNIF);
                     System.out.println("NIF atualizado com sucesso.");
                 } else {
-                    System.out.println("Formato de NIF inválido. O NIF deve ter exatamente 9 dígitos.");
+                    System.out.println("Formato de NIF inv?lido. O NIF deve ter exatamente 9 d?gitos.");
                 }
                 break;
             case 3:
@@ -178,7 +183,7 @@ public class GerirClientes {
                     cliente.setTelefone(novoTelefone);
                     System.out.println("Telefone atualizado com sucesso.");
                 } else {
-                    System.out.println("Número de telefone inválido. Deve ter 9 dígitos e começar com 9.");
+                    System.out.println("N?mero de telefone inv?lido. Deve ter 9 d?gitos e come?ar com 9.");
                 }
                 break;
             case 4:
@@ -195,7 +200,7 @@ public class GerirClientes {
                     cliente.setDataNascimento(novaDataNascimento);
                     System.out.println("Data de nascimento atualizada com sucesso.");
                 } catch (Exception e) {
-                    System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy.");
+                    System.out.println("Formato de data inv?lido. Use o formato dd/MM/yyyy.");
                 }
                 break;
             case 6:
@@ -205,10 +210,10 @@ public class GerirClientes {
                 System.out.println("Email atualizado com sucesso.");
                 break;
             case 7:
-                System.out.print("Digite o novo cartão de cliente: ");
+                System.out.print("Digite o novo cart?o de cliente: ");
                 String novoCartaoCliente = scanner.nextLine();
                 cliente.setCartaoCliente(novoCartaoCliente);
-                System.out.println("Cartão de cliente atualizado com sucesso.");
+                System.out.println("Cart?o de cliente atualizado com sucesso.");
                 break;
             case 8:
                 System.out.print("Digite os novos pontos de fidelidade: ");
@@ -217,14 +222,14 @@ public class GerirClientes {
                 System.out.println("Pontos de fidelidade atualizados com sucesso.");
                 break;
             case 0:
-                System.out.println("Saindo da atualização.");
+                System.out.println("Saindo da atualiza??o.");
                 break;
             default:
-                System.out.println("Opção inválida.");
+                System.out.println("Op??o inv?lida.");
         }
 
         System.out.println("Dados atualizados com sucesso:");
-        exibirDetalhesCliente(cliente);
+        visualizarDetalhesCliente(cliente);
     }
 
     private Cliente encontrarClientePorNIF(String nifCliente) {
@@ -235,6 +240,8 @@ public class GerirClientes {
         }
         return null;
     }
+
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public Cliente cadastroCliente() {
         System.out.println("Cadastro de novo cliente...");
@@ -252,7 +259,6 @@ public class GerirClientes {
 
         System.out.print("Telefone (9 dígitos, começando com 9): ");
         String telefone = scanner.nextLine();
-
         if (!telefone.matches("9\\d{8}")) {
             System.out.println("Número de telefone inválido. Deve ter 9 dígitos e começar com 9.");
             return null;
@@ -263,18 +269,23 @@ public class GerirClientes {
 
         System.out.print("Data de nascimento (dd/MM/yyyy): ");
         String dataNascimentoStr = scanner.nextLine();
-        try {
-            LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, formatter);
-            // Restante da lógica de cadastro...
-            Cliente novoCliente = new Cliente(nomeCompleto, nif, telefone, morada, dataNascimento, null, null);
-            clientes.add(novoCliente);
-            System.out.println("Cliente cadastrado com sucesso.");
-            return novoCliente;
-        } catch (Exception e) {
-            System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy.");
-            return null;
-        }
+        LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+        System.out.print("Email: ");
+        String email = scanner.nextLine();
+
+        System.out.print("Cartão de cliente: ");
+        String cartaoCliente = scanner.nextLine();
+
+        Cliente novoCliente = new Cliente(nomeCompleto, nif, telefone, morada, dataNascimento, email, cartaoCliente);
+
+        clientes.add(novoCliente);
+
+        System.out.println("Cliente cadastrado com sucesso.");
+
+        return novoCliente;
     }
+    
 
     private boolean validarFormatoNIF(String nif) {
         // Verifica se o NIF tem  9 dígitos

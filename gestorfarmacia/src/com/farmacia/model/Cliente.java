@@ -10,12 +10,12 @@ public class Cliente {
     private String nif;
     private String telefone;
     private String morada;
-    private String dataNascimento;
+    private LocalDate dataNascimento;  // Alteração para LocalDate
     private String email;
     private String cartaoCliente;
     private int pontosFidelidade;
 
-    public Cliente(String nomeCompleto, String nif, String telefone, String morada, String dataNascimento, String email, String cartaoCliente) {
+    public Cliente(String nomeCompleto, String nif, String telefone, String morada, LocalDate dataNascimento, String email, String cartaoCliente) {
         this.idCliente = contadorClientes++;
         this.nomeCompleto = nomeCompleto;
         this.nif = nif;
@@ -26,6 +26,7 @@ public class Cliente {
         this.cartaoCliente = cartaoCliente;
         this.pontosFidelidade = 0;
     }
+
 
     public int getIdCliente() {
         return idCliente;
@@ -63,7 +64,7 @@ public class Cliente {
         this.morada = morada;
     }
 
-    public String getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
