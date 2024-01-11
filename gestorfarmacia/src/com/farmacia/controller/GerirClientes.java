@@ -8,23 +8,34 @@ import com.farmacia.model.Cliente;
 public class GerirClientes {
     private ArrayList<Cliente> clientes;
     private Scanner scanner;
-    private DateTimeFormatter formatter;
+    private MenuController menuController;  // Adicione um campo para armazenar o MenuController
 
-    public GerirClientes() {
+    public GerirClientes(MenuController menuController) {
         this.clientes = new ArrayList<>();
         this.scanner = new Scanner(System.in);
-        this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.menuController = menuController;  // Atribua a instância de MenuController
 
         // Exemplo de cliente
-        Cliente exemploCliente = new Cliente("João Silva", "123456789", "987654321", "Rua Exemplo, 123", "01/01/1980", "joao.silva@email.com", "1234567890");
+        Cliente exemploCliente = new Cliente("Mariana Silva", "123456789", "987654321", "Rua Exemplo, 123", "01/01/1980", "joao.silva@email.com", "1234567890");
         clientes.add(exemploCliente);
+    }
+
+    
+    private void   mostrarSubMenuClientes() {
+        System.out.println("---- MENU GERIR CLIENTES ----");
+        System.out.println("1. Cadastrar novo cliente");
+        System.out.println("2. Exibir lista de clientes");
+        System.out.println("3. Buscar cliente pelo NIF");
+        System.out.println("8. Obter número total de vendas");
+        System.out.println("0. Sair");
+        System.out.print("Escolha uma opção: ");
     }
 
     public void exibirSubMenuClientes() {
         int opcao;
 
         do {
-            mostrarTodosClientes();
+            mostrarSubMenuClientes();
             opcao = receberOpcaoSubMenuClientes();
 
             switch (opcao) {

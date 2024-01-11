@@ -9,10 +9,10 @@ public class MenuController {
 
     public MenuController() {
         this.scanner = new Scanner(System.in);
-        this.sessao = new Sessao();  // Mova a inicialização da Sessao para antes do VendaController
         this.gerirMedicamentos = new GerirMedicamentos(this);
         this.gerirClientes = new GerirClientes(this);
         this.vendaController = new VendaController(gerirMedicamentos, gerirClientes, sessao);
+        this.sessao = new Sessao();
     }
 
     public void exibirMenuPrincipal() {
@@ -24,7 +24,7 @@ public class MenuController {
 
             switch (opcao) {
                 case 1:
-                    vendaController.realizarVenda() ;
+                    vendaController.realizarVenda();
                     break;
                 case 2:
                     gerirMedicamentos.exibirSubMenuMedicamentos();
@@ -74,3 +74,4 @@ public class MenuController {
         return scanner.nextInt();
     }
 }
+
