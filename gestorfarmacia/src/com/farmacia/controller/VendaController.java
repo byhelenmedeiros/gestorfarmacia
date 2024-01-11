@@ -88,29 +88,38 @@ public class VendaController {
         }
     }
 
-    private void processarVenda(Scanner scanner, Cliente cliente, Medicamento medicamento) {
+    private void processarVenda(Scanner scanner, Cliente cliente, Medicamento medicamento, GerirFinanceiro gerirFinanceiro) {
         double precoTotal = medicamento.getPreco();
-        System.out.println("\nPre�o total da venda: ?" + precoTotal);
-
+        System.out.println("\nPreço total da venda: ?" + precoTotal);
+    
         System.out.print("Forma de pagamento (Multibanco/Dinheiro): ");
         String formaPagamento = scanner.nextLine();
-
+    
         if (formaPagamento.equalsIgnoreCase("Dinheiro")) {
             System.out.print("Digite o valor em dinheiro: ");
             double valorPago = Double.parseDouble(scanner.nextLine());
-
+    
             if (valorPago < precoTotal) {
                 System.out.println("Valor menor que o do medicamento. Venda cancelada.");
             } else {
                 double troco = valorPago - precoTotal;
-                System.out.println("Venda conclu�da para o cliente " + cliente.getNome() + ".");
+                System.out.println("Venda concluída para o cliente " + cliente.getNome() + ".");
                 System.out.println("Troco: ?" + troco);
+    
+                registrarTransacaoFinanceira(cliente, precoTotal, "Venda em Dinheiro");
             }
         } else if (formaPagamento.equalsIgnoreCase("Multibanco")) {
-            System.out.println("Insira o cart�o no leitor.");
-            System.out.println("Compra conclu�da.");
+            System.out.println("Insira o cartão no leitor.");
+            System.out.println("Compra concluída.");
+    
+            registrarTransacaoFinanceira(cliente, precoTotal, "Venda com Multibanco");
         } else {
-            System.out.println("Forma de pagamento inv�lida. Venda cancelada.");
+            System.out.println("Forma de pagamento inválida. Venda cancelada.");
         }
     }
+    
+    private void registrarTransacaoFinanceira(Cliente cliente, double valor, String descricao) {
+        GerirFinanceiro.registrarReceita(valor, descricao + " para " + cliente.getNome());
+    }
+    
 }

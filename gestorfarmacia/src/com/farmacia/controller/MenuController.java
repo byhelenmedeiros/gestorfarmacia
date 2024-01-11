@@ -31,7 +31,7 @@ public class MenuController {
                     gerirMedicamentos.exibirSubMenuMedicamentos();
                     break;
                 case 3:
-                    System.out.println("Escolheu Relat�rio de Vendas.");
+                    GerirFinanceiro.exibirSubMenuFinanceiro();
                     break;
                 case 4:
                     System.out.println("Voc� escolheu gerir funcion�rios.");
@@ -59,7 +59,7 @@ public class MenuController {
         System.out.println("---- MENU PRINCIPAL ----");
         System.out.println("1. Registrar Venda");
         System.out.println("2. Gerir Medicamentos");
-        System.out.println("3. Relat�rio de Vendas");
+        System.out.println("3. Controle financeiro");
         System.out.println("4. Gerir Funcion�rios");
         System.out.println("5. Gerir Clientes");
         System.out.println("8. Obter n�mero total de vendas");
