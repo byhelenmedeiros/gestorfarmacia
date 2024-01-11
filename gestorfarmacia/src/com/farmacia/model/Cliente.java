@@ -92,4 +92,8 @@ public class Cliente {
     public void setPontosFidelidade(int pontosFidelidade) {
         this.pontosFidelidade = pontosFidelidade;
     }
+
+    public String getNome() {
+        return null;
+    }
 }

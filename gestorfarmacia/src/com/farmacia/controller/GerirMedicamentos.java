@@ -14,11 +14,45 @@ public class GerirMedicamentos {
     private DateTimeFormatter formatter;
     private MenuController menuController; 
 
+    listaMedicamentos.add(new Medicamento("Paracetamol", 100, LocalDate.parse("01/01/2023", formatter), "Analgésico", 10.5, "Comprimido"));
+    listaMedicamentos.add(new Medicamento("Ibuprofeno", 50, LocalDate.parse("01/01/2023", formatter), "Anti-inflamatório", 15.75, "Comprimido"));
+    listaMedicamentos.add(new Medicamento("Dipirona", 75, LocalDate.parse("01/01/2023", formatter), "Analgésico", 8.2, "Gotas"));
+
+
     public GerirMedicamentos(MenuController menuController) {
         this.listaMedicamentos = new ArrayList<>();
         this.scanner = new Scanner(System.in);
         this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.menuController = menuController; 
+    }
+
+    public void exibirSubMenuMedicamentos() {
+        int opcao;
+
+        do {
+            mostrarSubMenuMedicamentos();
+            opcao = receberOpcaoSubMenu();
+
+            switch (opcao) {
+                case 1:
+                    cadastroMedicamento();
+                    break;
+                case 2:
+                    mostrarTodosMedicamentos();
+                    break;
+                case 3:
+                    realizarVenda();
+                    break;
+                case 4:
+                    gerarRelatorio();
+                    break;
+                case 0:
+                    System.out.println("Voltando para o Menu Principal.");
+                    return;
+                default:
+                    System.out.println("OpÃ§Ã£o invÃ¡lida. Escolha novamente.");
+            }
+        } while (opcao != 0);
     }
 
     /**
@@ -82,7 +116,7 @@ public class GerirMedicamentos {
                 System.out.println("Quantidade em Estoque: " + medicamento.getQuantidade());
                 System.out.println("Data de Validade: " + medicamento.getDataValidade().format(formatter));
                 System.out.println("Descrição: " + medicamento.getDescricao());
-                System.out.println("Preço: " + medicamento.getPreco());
+                System.out.println("Preço: ?" + medicamento.getPreco()); 
                 System.out.println("Tipo: " + medicamento.getTipo());
                 System.out.println("--------------------------------------");
             }

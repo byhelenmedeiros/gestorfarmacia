@@ -19,6 +19,29 @@ public class GerirClientes {
         clientes.add(exemploCliente);
     }
 
+    public int exibirSubMenuClientes() {
+        int opcao;
+
+        do {
+            mostrarTodosClientes();
+            opcao = exibirSubMenuClientes();
+
+            switch (opcao) {
+                case 1:
+                    cadastroCliente();
+                    break;
+                case 2:
+                    mostrarTodosClientes();
+                    break;
+                case 0:
+                    System.out.println("Voltando para o Menu Principal.");
+                    return;
+                default:
+                    System.out.println("Opção inválida. Escolha novamente.");
+            }
+        } while (opcao != 0);
+    }
+
     public GerirClientes(MenuController menuController) {
     }
 
