@@ -1,5 +1,8 @@
 import java.util.Scanner;
 import com.farmacia.model.Sessao;
+import com.farmacia.controller.GerirFinanceiro;  
+import com.farmacia.controller.GerirMedicamentos; 
+import com.farmacia.controller.GerirClientes;  
 
 public class MenuController {
     private Scanner scanner;
@@ -16,6 +19,7 @@ public class MenuController {
         this.vendaController = new VendaController(gerirMedicamentos, gerirClientes, sessao);
     }
 
+
     public void exibirMenuPrincipal() {
         int opcao;
 
@@ -31,7 +35,8 @@ public class MenuController {
                     gerirMedicamentos.exibirSubMenuMedicamentos();
                     break;
                 case 3:
-                    GerirFinanceiro.exibirSubMenuFinanceiro();
+                GerirFinanceiro gerirFinanceiro = new GerirFinanceiro();
+                gerirFinanceiro.exibirSubMenuFinanceiro();
                     break;
                 case 4:
                     System.out.println("Voc� escolheu gerir funcion�rios.");
