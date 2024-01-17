@@ -68,20 +68,20 @@ public class GerirClientes {
 
     Cliente cadastrarCliente() {
         System.out.print("Digite o nome do cliente: ");
-        String nome = scanner.nextLine();
+           String nome = scanner.nextLine();
         System.out.print("Digite o NIF do cliente: ");
-        int nif = scanner.nextInt();
+            int nif = Integer.parseInt(scanner.nextLine());
         System.out.print("Digite o telefone do cliente: ");
-        String telefone = scanner.nextLine();
+            int telefone = Integer.parseInt(scanner.nextLine());
         System.out.print("Digite a morada do cliente: ");
-        String morada = scanner.nextLine();
+            String morada = scanner.nextLine();
         System.out.print("Digite a data de nascimento do cliente (dd/MM/yyyy): ");
-        String dataNascimentoStr = scanner.nextLine();
-        LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, formatter);
+            String dataNascimentoStr = scanner.nextLine();
+            LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, formatter);
         System.out.print("Digite o email do cliente: ");
-        String email = scanner.nextLine();
+            String email = scanner.nextLine();
         System.out.print("Digite o cartão de cliente do cliente: ");
-        String cartaoCliente = scanner.nextLine();
+            int cartaoCliente = scanner.nextInt();
 
         Cliente novoCliente = new Cliente(nome, nif, telefone, morada, dataNascimento, email, cartaoCliente);
         clientes.add(novoCliente);

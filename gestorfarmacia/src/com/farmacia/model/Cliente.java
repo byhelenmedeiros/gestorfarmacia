@@ -8,22 +8,22 @@ public class Cliente {
     private int idCliente;
     private String nomeCompleto;
     private int nif;
-    private String telefone;
+    private int telefone;
     private String morada;
     private LocalDate dataNascimento;
     private String email;
-    private String cartaoCliente;
+    private int cartaoCliente;
     private int pontosFidelidade;
 
-    public Cliente(String nomeCompleto, int nif, String telefone, String morada, LocalDate dataNascimento, String email, String cartaoCliente) {
+    public Cliente(String nomeCompleto, int nif, int telefone2, String morada, LocalDate dataNascimento, String email, int cartaoCliente2) {
         this.idCliente = contadorClientes++;
         this.nomeCompleto = nomeCompleto;
         this.nif = nif;
-        this.telefone = telefone;
+        this.telefone = telefone2;
         this.morada = morada;
         this.dataNascimento = dataNascimento;
         this.email = email;
-        this.cartaoCliente = cartaoCliente;
+        this.cartaoCliente = cartaoCliente2;
         this.pontosFidelidade = 0;
     }
 
@@ -48,11 +48,11 @@ public class Cliente {
         this.nif = nif;
     }
 
-    public String getTelefone() {
+    public int getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
 
@@ -80,11 +80,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public String getCartaoCliente() {
+    public int getCartaoCliente() {
         return cartaoCliente;
     }
 
-    public void setCartaoCliente(String cartaoCliente) {
+    public void setCartaoCliente(int cartaoCliente) {
         this.cartaoCliente = cartaoCliente;
     }
 
