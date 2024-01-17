@@ -4,8 +4,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.List;
 import com.farmacia.model.Cliente;
+
 public class GerirClientes {
     private ArrayList<Cliente> clientes;
     private Scanner scanner;
@@ -42,8 +43,7 @@ public class GerirClientes {
 
             switch (opcao) {
                 case 1:
-                    cadastrarCliente(null);
-
+                    cadastrarCliente();
                     break;
                 case 2:
                     listarClientesResumido();
@@ -65,9 +65,30 @@ public class GerirClientes {
         return scanner.nextInt();
     }
 
+    
     public Cliente cadastrarCliente() {
-        clientes.add(cliente);
+        System.out.print("Digite o nome do cliente: ");
+        String nome = scanner.nextLine();
+        System.out.print("Digite o NIF do cliente: ");
+        String nif = scanner.nextLine();
+        System.out.print("Digite o telefone do cliente: ");
+        String telefone = scanner.nextLine();
+        System.out.print("Digite a morada do cliente: ");
+        String morada = scanner.nextLine();
+        System.out.print("Digite a data de nascimento do cliente (dd/MM/yyyy): ");
+        String dataNascimentoStr = scanner.nextLine();
+        LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, formatter);
+        System.out.print("Digite o email do cliente: ");
+        String email = scanner.nextLine();
+        System.out.print("Digite o cartão de cliente do cliente: ");
+        String cartaoCliente = scanner.nextLine();
+
+        Cliente novoCliente = new Cliente(nome, nif, telefone, morada, dataNascimento, email, cartaoCliente);
+        clientes.add(novoCliente);
+
+        return novoCliente;  // Retornando o novo cliente
     }
+
 
     public Cliente buscarClientePorNIF(Cliente cliente2) {
         for (Cliente cliente : clientes) {
