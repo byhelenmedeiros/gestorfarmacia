@@ -7,7 +7,7 @@ public class Cliente {
 
     private int idCliente;
     private String nomeCompleto;
-    private String nif;
+    private int nif;
     private String telefone;
     private String morada;
     private LocalDate dataNascimento;
@@ -15,7 +15,7 @@ public class Cliente {
     private String cartaoCliente;
     private int pontosFidelidade;
 
-    public Cliente(String nomeCompleto, String nif, String telefone, String morada, LocalDate dataNascimento, String email, String cartaoCliente) {
+    public Cliente(String nomeCompleto, int nif, String telefone, String morada, LocalDate dataNascimento, String email, String cartaoCliente) {
         this.idCliente = contadorClientes++;
         this.nomeCompleto = nomeCompleto;
         this.nif = nif;
@@ -40,11 +40,11 @@ public class Cliente {
         this.nomeCompleto = nomeCompleto;
     }
 
-    public String getNif() {
+    public int getNif() {
         return nif;
     }
 
-    public void setNif(String nif) {
+    public void setNif(int nif) {
         this.nif = nif;
     }
 

@@ -4,7 +4,7 @@ import com.farmacia.model.Sessao;
 
 import java.util.Scanner;
 
-public class VendaController {
+public class VendaController{
     private GerirMedicamentos gerirMedicamentos;
     private GerirClientes gerirClientes;
     private Sessao sessao;
@@ -13,14 +13,15 @@ public class VendaController {
         this.gerirMedicamentos = gerirMedicamentos;
         this.gerirClientes = gerirClientes;
         this.sessao = sessao;
+        
     }
 
     public void realizarVenda() {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.print("Digite o NIF do cliente (ou deixe em branco para cadastrar um novo): ");
-            String nifCliente = scanner.nextLine();
+                int nifCliente = scanner.nextInt();
 
-            Cliente cliente = gerirClientes.encontrarClientePorNIF(nifCliente);
+                Cliente cliente = gerirClientes.buscarClientePorNIF(nifCliente);
 
             if (cliente == null) {
                 System.out.println("Cliente nao encontrado.");
@@ -71,6 +72,9 @@ public class VendaController {
         }
     }
 
+    
+    
+    
     private boolean cadastrarNovoCliente(Scanner scanner) {
         System.out.print("Deseja cadastrar um novo cliente? (S/N): ");
         String opcaoCadastro = scanner.nextLine();
