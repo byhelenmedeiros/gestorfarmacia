@@ -24,6 +24,6 @@ public class Main {
 
         scanner.close();
 
-        return "admin".equals(usuario) && "senha123".equals(senha);
+        return "admin".equals(usuario) && "123".equals(senha);
     }
 }
