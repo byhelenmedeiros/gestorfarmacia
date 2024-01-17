@@ -2,81 +2,47 @@ import java.util.Scanner;
 import com.farmacia.model.Cliente;
 import com.farmacia.model.Medicamento;
 
-
-public class VendaController{
+public class VendaController {
     private GerirMedicamentos gerirMedicamentos;
     private GerirClientes gerirClientes;
+    private Scanner scanner;
 
-    public VendaController(GerirMedicamentos gerirMedicamentos, GerirClientes gerirClientes) {
+    public VendaController(GerirMedicamentos gerirMedicamentos, GerirClientes gerirClientes, Scanner scanner) {
         this.gerirMedicamentos = gerirMedicamentos;
         this.gerirClientes = gerirClientes;
-        
+        this.scanner = scanner;
     }
 
     public void realizarVenda() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.print("Digite o NIF do cliente (ou deixe em branco para cadastrar um novo): ");
-                int nifCliente = scanner.nextInt();
+        System.out.print("Digite o NIF do cliente (ou deixe em branco para cadastrar um novo): ");
+        int nifCliente;
+        try {
+            nifCliente = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("NIF inválido. Venda cancelada.");
+            return;
+        }
 
-                Cliente cliente = gerirClientes.buscarClientePorNIF(nifCliente);
+        Cliente cliente = gerirClientes.buscarClientePorNIF(nifCliente);
 
-            if (cliente == null) {
-                System.out.println("Cliente nao encontrado.");
-                if (cadastrarNovoCliente(scanner)) {
-                    cliente = gerirClientes.cadastrarCliente();
-                    System.out.println("Novo cliente cadastrado com sucesso.");
-                } else {
-                    System.out.println("Venda cancelada.");
-                    return;
-                }
-            }
-
-            System.out.println("\nCliente encontrado:");
-            System.out.println("Nome: " + cliente.getNomeCompleto());
-            System.out.println("NIF: " + cliente.getNif());
-
-            mostrarListaMedicamentos();
-
-            System.out.print("\nDigite o numero do medicamento para venda (ou 0 para cancelar): ");
-            int opcaoVenda;
-
-            try {
-                opcaoVenda = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Opcao invalida. Venda cancelada.");
+        if (cliente == null) {
+            System.out.println("Cliente não encontrado.");
+            if (cadastrarNovoCliente()) {
+                cliente = gerirClientes.cadastrarCliente();
+                System.out.println("Novo cliente cadastrado com sucesso.");
+            } else {
+                System.out.println("Venda cancelada.");
                 return;
             }
-
-            if (opcaoVenda >= 1 && opcaoVenda <= gerirMedicamentos.listaMedicamentos.size()) {
-                Medicamento med = gerirMedicamentos.listaMedicamentos.get(opcaoVenda - 1);
-
-                System.out.println("\nMedicamento selecionado: " + med.getNome());
-                System.out.println("Quantidade em Estoque: " + med.getQuantidade());
-
-                System.out.print("\nDeseja efetuar a venda deste medicamento para o cliente? (S/N): ");
-                String opcaoVendaMedicamento = scanner.nextLine();
-
-                if (opcaoVendaMedicamento.equalsIgnoreCase("S")) {
-                    processarVenda(scanner, cliente, med);
-                } else {
-                    System.out.println("Venda cancelada.");
-                }
-            } else if (opcaoVenda == 0) {
-                System.out.println("Venda cancelada.");
-            } else {
-                System.out.println("Opcao invalida. Venda cancelada.");
-            }
         }
+    
     }
-
-    
-    
-    
-    private boolean cadastrarNovoCliente(Scanner scanner) {
+    private boolean cadastrarNovoCliente() {
         System.out.print("Deseja cadastrar um novo cliente? (S/N): ");
         String opcaoCadastro = scanner.nextLine();
         return opcaoCadastro.equalsIgnoreCase("S");
     }
+
 
     private void mostrarListaMedicamentos() {
         System.out.println("\nMedicamentos Disponiveis para Venda:");

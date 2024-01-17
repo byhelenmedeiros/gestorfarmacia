@@ -92,9 +92,9 @@ public class GerirMedicamentos {
             System.out.print("Data de Validade (dd/MM/yyyy): ");
             String dataValidadeStr = scanner.nextLine();
             LocalDate dataValidade = LocalDate.parse(dataValidadeStr, formatter);
-            System.out.print("Descri��o do medicamento: ");
+            System.out.print("Descricao do medicamento: ");
             String descricao = scanner.nextLine();
-            System.out.print("Pre�o: ");
+            System.out.print("Preco: ");
             double preco = Double.parseDouble(scanner.nextLine());
             System.out.print("Tipo de medicamento: ");
             String tipo = scanner.nextLine();

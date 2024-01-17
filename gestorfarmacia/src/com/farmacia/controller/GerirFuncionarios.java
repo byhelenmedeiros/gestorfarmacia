@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GerirFuncionarios {
-    private List<Funcionario> listaFuncionarios;
-    private Scanner scanner;
+    private static List<Funcionario> listaFuncionarios = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
+    
 
     public GerirFuncionarios() {
         this.listaFuncionarios = new ArrayList<>();
-        this.scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
     }
 
     public static void cadastrarFuncionario() {

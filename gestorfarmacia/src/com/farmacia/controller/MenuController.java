@@ -1,16 +1,17 @@
+
 import java.util.Scanner;
 
 public class MenuController {
-    private Scanner scanner;
     private GerirMedicamentos gerirMedicamentos;
     private GerirClientes gerirClientes;
     private VendaController vendaController;
+    private Scanner scanner;
 
     public MenuController() {
         this.scanner = new Scanner(System.in);
         this.gerirMedicamentos = new GerirMedicamentos(this);
         this.gerirClientes = new GerirClientes(this);
-        this.vendaController = new VendaController(gerirMedicamentos, gerirClientes);
+        this.vendaController = new VendaController(gerirMedicamentos, gerirClientes, scanner);
     }
 
     public void exibirMenuPrincipal() {
@@ -52,7 +53,7 @@ public class MenuController {
         } while (opcao != 0);
     }
 
-    private void mostrarMenuPrincipal() {
+    private static void mostrarMenuPrincipal() {
         System.out.println("---- MENU PRINCIPAL ----");
         System.out.println("1. Registrar Venda");
         System.out.println("2. Gerir Medicamentos");
@@ -67,7 +68,7 @@ public class MenuController {
         System.out.print("Escolha uma opcao: ");
 
         while (!scanner.hasNextInt()) {
-            scanner.nextLine(); // Limpa a linha inválida
+            scanner.nextLine(); 
             System.out.println("Por favor, digite um numero valido.");
         }
 
