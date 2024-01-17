@@ -54,7 +54,7 @@ public class MenuController {
     }
 
     private static void mostrarMenuPrincipal() {
-        System.out.println("---- MENU PRINCIPAL ----");
+        System.out.println("///---------- MENU PRINCIPAL ---------///");
         System.out.println("1. Registrar Venda");
         System.out.println("2. Gerir Medicamentos");
         System.out.println("3. Controle financeiro");
