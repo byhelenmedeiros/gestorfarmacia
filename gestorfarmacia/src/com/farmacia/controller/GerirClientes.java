@@ -6,13 +6,15 @@ import java.util.Scanner;
 import com.farmacia.model.Cliente;
 
 
+
 public class GerirClientes {
-    private List<Cliente> clientes;
+    private static List<Cliente> clientes;
     private Scanner scanner;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    
 
     public GerirClientes(MenuController menuController) {
-        this.clientes = new ArrayList<>();
+        GerirClientes.clientes = new ArrayList<>();
         this.scanner = new Scanner(System.in);
     }
 
@@ -114,18 +116,20 @@ public class GerirClientes {
         System.out.println("Pontos de Fidelidade: " + cliente.getPontosFidelidade());
     }
 
-    public static Cliente[] getClientes() {
-        return null;
-         }
-
+    public static void getClientes() {
+        if (clientes == null) {
+            return;
+        }
+    }
     public Cliente buscarClientePorNIF(int nifCliente) {
-        for (Cliente cliente : GerirClientes.getClientes()) {
+        for (Cliente cliente : clientes) {
             if (cliente.getNif() == nifCliente) {
                 return cliente;
             }
         }
         return null;
     }
+    
     
 
 }

@@ -1,19 +1,19 @@
 import java.util.Scanner;
 
 public class MenuController {
-    private static Scanner scanner;
-    private static GerirMedicamentos gerirMedicamentos;
-    private static GerirClientes gerirClientes;
-    private static VendaController vendaController;
+    private Scanner scanner;
+    private GerirMedicamentos gerirMedicamentos;
+    private GerirClientes gerirClientes;
+    private VendaController vendaController;
 
     public MenuController() {
         this.scanner = new Scanner(System.in);
-        gerirMedicamentos = new GerirMedicamentos(this);
-        gerirClientes = new GerirClientes(this);
-        vendaController = new VendaController(gerirMedicamentos, gerirClientes);
+        this.gerirMedicamentos = new GerirMedicamentos(this);
+        this.gerirClientes = new GerirClientes(this);
+        this.vendaController = new VendaController(gerirMedicamentos, gerirClientes);
     }
 
-    public static void exibirMenuPrincipal() {
+    public void exibirMenuPrincipal() {
         int opcao;
 
         do {
@@ -33,6 +33,7 @@ public class MenuController {
                     break;
                 case 4:
                     System.out.println("Voce escolheu gerir funcionarios.");
+                    GerirFuncionarios.cadastrarFuncionario();
                     break;
                 case 5:
                     gerirClientes.exibirSubMenuClientes();
@@ -50,28 +51,29 @@ public class MenuController {
             }
         } while (opcao != 0);
     }
-    private static void mostrarMenuPrincipal() {
+
+    private void mostrarMenuPrincipal() {
         System.out.println("---- MENU PRINCIPAL ----");
         System.out.println("1. Registrar Venda");
         System.out.println("2. Gerir Medicamentos");
         System.out.println("3. Controle financeiro");
-        System.out.println("4. Gerir Funcionarios");
+        System.out.println("4. Cadastro de funcionario");
         System.out.println("5. Gerir Clientes");
         System.out.println("8. Obter numero total de vendas");
         System.out.println("0. Sair");
     }
 
-    private static int receberOpcao() {
+    private int receberOpcao() {
         System.out.print("Escolha uma opcao: ");
-        
+
         while (!scanner.hasNextInt()) {
             scanner.nextLine(); // Limpa a linha inválida
             System.out.println("Por favor, digite um numero valido.");
         }
-    
+
         int opcao = scanner.nextInt();
         scanner.nextLine(); // Limpa o buffer
-    
+
         return opcao;
     }
-}    
+}

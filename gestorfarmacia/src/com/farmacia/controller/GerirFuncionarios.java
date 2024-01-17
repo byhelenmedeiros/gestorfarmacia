@@ -13,7 +13,7 @@ public class GerirFuncionarios {
         this.scanner = new Scanner(System.in);
     }
 
-    public void cadastrarFuncionario() {
+    public static void cadastrarFuncionario() {
         System.out.println("------ Cadastro de Novo Funcionário ------");
 
         System.out.print("Nome: ");
