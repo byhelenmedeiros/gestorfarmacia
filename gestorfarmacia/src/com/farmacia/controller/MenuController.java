@@ -1,19 +1,19 @@
 import java.util.Scanner;
 
 public class MenuController {
-    private Scanner scanner;
-    private GerirMedicamentos gerirMedicamentos;
-    private GerirClientes gerirClientes;
-    private VendaController vendaController;
+    private static Scanner scanner;
+    private static GerirMedicamentos gerirMedicamentos;
+    private static GerirClientes gerirClientes;
+    private static VendaController vendaController;
 
     public MenuController() {
         this.scanner = new Scanner(System.in);
-        this.gerirMedicamentos = new GerirMedicamentos(this);
-        this.gerirClientes = new GerirClientes(this);
-        this.vendaController = new VendaController(gerirMedicamentos, gerirClientes);
+        gerirMedicamentos = new GerirMedicamentos(this);
+        gerirClientes = new GerirClientes(this);
+        vendaController = new VendaController(gerirMedicamentos, gerirClientes);
     }
 
-    public void exibirMenuPrincipal() {
+    public static void exibirMenuPrincipal() {
         int opcao;
 
         do {
@@ -50,8 +50,7 @@ public class MenuController {
             }
         } while (opcao != 0);
     }
-
-    private void mostrarMenuPrincipal() {
+    private static void mostrarMenuPrincipal() {
         System.out.println("---- MENU PRINCIPAL ----");
         System.out.println("1. Registrar Venda");
         System.out.println("2. Gerir Medicamentos");
@@ -60,10 +59,9 @@ public class MenuController {
         System.out.println("5. Gerir Clientes");
         System.out.println("8. Obter numero total de vendas");
         System.out.println("0. Sair");
-        System.out.print("Escolha uma opcao: ");
     }
 
-    private int receberOpcao() {
+    private static int receberOpcao() {
         System.out.print("Escolha uma opcao: ");
         
         while (!scanner.hasNextInt()) {
