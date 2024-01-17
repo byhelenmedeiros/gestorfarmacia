@@ -10,7 +10,7 @@ public class Cliente {
     private String nif;
     private String telefone;
     private String morada;
-    private LocalDate dataNascimento;  // Alteração para LocalDate
+    private LocalDate dataNascimento;
     private String email;
     private String cartaoCliente;
     private int pontosFidelidade;
