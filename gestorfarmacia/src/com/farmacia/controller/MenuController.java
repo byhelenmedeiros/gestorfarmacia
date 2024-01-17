@@ -1,19 +1,16 @@
 import java.util.Scanner;
-import com.farmacia.model.Sessao;
 
 public class MenuController {
     private Scanner scanner;
     private GerirMedicamentos gerirMedicamentos;
     private GerirClientes gerirClientes;
-    private Sessao sessao;
     private VendaController vendaController;
 
     public MenuController() {
         this.scanner = new Scanner(System.in);
-        this.sessao = new Sessao();
         this.gerirMedicamentos = new GerirMedicamentos(this);
         this.gerirClientes = new GerirClientes(this);
-        this.vendaController = new VendaController(gerirMedicamentos, gerirClientes, sessao);
+        this.vendaController = new VendaController(gerirMedicamentos, gerirClientes);
     }
 
     public void exibirMenuPrincipal() {
@@ -67,12 +64,16 @@ public class MenuController {
     }
 
     private int receberOpcao() {
-        while (true) {
-            try {
-                return Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Por favor, digite um numero valido.");
-            }
+        System.out.print("Escolha uma opcao: ");
+        
+        while (!scanner.hasNextInt()) {
+            scanner.nextLine(); // Limpa a linha inválida
+            System.out.println("Por favor, digite um numero valido.");
         }
+    
+        int opcao = scanner.nextInt();
+        scanner.nextLine(); // Limpa o buffer
+    
+        return opcao;
     }
-}
+}    

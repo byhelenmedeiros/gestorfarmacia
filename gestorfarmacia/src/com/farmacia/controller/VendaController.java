@@ -9,7 +9,7 @@ public class VendaController{
     private GerirClientes gerirClientes;
     private Sessao sessao;
 
-    public VendaController(GerirMedicamentos gerirMedicamentos, GerirClientes gerirClientes, Sessao sessao) {
+    public VendaController(GerirMedicamentos gerirMedicamentos, GerirClientes gerirClientes) {
         this.gerirMedicamentos = gerirMedicamentos;
         this.gerirClientes = gerirClientes;
         this.sessao = sessao;

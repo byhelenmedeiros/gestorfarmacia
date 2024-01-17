@@ -1,10 +1,10 @@
 import java.util.Scanner;
+import com.farmacia.controller;
 
 public class Main {
     public static void main(String[] args) {
         if (autenticarAdmin()) {
-            System.out.println("*********Autenticação bem-sucedida.********");
-            System.out.println("//----Bem-vindo ao PharmaGest!-----//");
+            System.out.println("Autenticação bem-sucedida. Bem-vindo ao PharmaGest!");
             MenuController menuController = new MenuController();
             menuController.exibirMenuPrincipal();
         } else {
@@ -13,16 +13,14 @@ public class Main {
     }
 
     private static boolean autenticarAdmin() {
-        Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Usuário: ");
+            String usuario = scanner.nextLine();
 
-        System.out.print("Usuário: ");
-        String usuario = scanner.nextLine();
+            System.out.print("Senha: ");
+            String senha = scanner.nextLine();
 
-        System.out.print("Senha: ");
-        String senha = scanner.nextLine();
-
-        scanner.close();
-
-        return "admin".equals(usuario) && "123".equals(senha);
+            return "admin".equals(usuario) && "123".equals(senha);
+        }
     }
 }
