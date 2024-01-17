@@ -1,4 +1,4 @@
-package com.farmacia.controller;
+
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,14 +9,11 @@ import com.farmacia.model.Cliente;
 public class GerirClientes {
     private ArrayList<Cliente> clientes;
     private Scanner scanner;
-    private MenuController menuController;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public GerirClientes(MenuController menuController) {
         this.clientes = new ArrayList<>();
         this.scanner = new Scanner(System.in);
-        this.menuController = menuController;
-
         adicionarClienteExemplo("Mariana Silva", "299955874", "987654321", "Rua Silva Junior, 123", LocalDate.of(1980, 1, 1), "joao.silva@gmail.com", "1234567890");
         adicionarClienteExemplo("Maria Souza", "987654321", "914333546", "Avenida Principal, 456", LocalDate.of(1985, 5, 10), "maria.souza@gmail.com", "9876543210");
     }
@@ -45,7 +42,8 @@ public class GerirClientes {
 
             switch (opcao) {
                 case 1:
-                    cadastroCliente();
+                    cadastrarCliente(null);
+
                     break;
                 case 2:
                     listarClientesResumido();
@@ -67,7 +65,7 @@ public class GerirClientes {
         return scanner.nextInt();
     }
 
-    public void cadastrarCliente(Cliente cliente) {
+    public Cliente cadastrarCliente() {
         clientes.add(cliente);
     }
 
@@ -232,7 +230,7 @@ public class GerirClientes {
         visualizarDetalhesCliente(cliente);
     }
 
-    private Cliente encontrarClientePorNIF(String nifCliente) {
+    Cliente encontrarClientePorNIF(String nifCliente) {
         for (Cliente cliente : nifCliente) {
             if (cliente.getNif().equals(nifCliente)) {
                 return cliente;

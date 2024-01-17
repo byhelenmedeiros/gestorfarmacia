@@ -1,8 +1,5 @@
 import java.util.Scanner;
 import com.farmacia.model.Sessao;
-import com.farmacia.controller.GerirFinanceiro;
-import com.farmacia.controller.GerirMedicamentos;
-import com.farmacia.controller.GerirClientes;
 
 public class MenuController {
     private Scanner scanner;
@@ -72,7 +69,6 @@ public class MenuController {
     private int receberOpcao() {
         while (true) {
             try {
-                System.out.print("Escolha uma opcao: ");
                 return Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Por favor, digite um numero valido.");

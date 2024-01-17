@@ -17,7 +17,7 @@ public class GerirMedicamentos {
     private VendaController vendaController;  
 
 
-    public GerirMedicamentos(MenuController menuController, VendaController vendaController) {
+    public GerirMedicamentos(MenuController menuController) {
         this.listaMedicamentos = new ArrayList<>();
         this.scanner = new Scanner(System.in);
         this.formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");

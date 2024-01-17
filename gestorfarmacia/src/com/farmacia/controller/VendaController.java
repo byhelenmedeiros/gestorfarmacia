@@ -20,12 +20,12 @@ public class VendaController {
             System.out.print("Digite o NIF do cliente (ou deixe em branco para cadastrar um novo): ");
             String nifCliente = scanner.nextLine();
 
-            Cliente cliente = gerirClientes.buscarClientePorNIF(nifCliente);
+            Cliente cliente = gerirClientes.encontrarClientePorNIF(nifCliente);
 
             if (cliente == null) {
                 System.out.println("Cliente nao encontrado.");
                 if (cadastrarNovoCliente(scanner)) {
-                    cliente = gerirClientes.cadastroCliente();
+                    cliente = gerirClientes.cadastrarCliente();
                     System.out.println("Novo cliente cadastrado com sucesso.");
                 } else {
                     System.out.println("Venda cancelada.");

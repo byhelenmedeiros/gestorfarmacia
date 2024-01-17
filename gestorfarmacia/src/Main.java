@@ -1,4 +1,3 @@
-import com.farmacia.controller.MenuController;
 import java.util.Scanner;
 
 public class Main {
