@@ -71,10 +71,12 @@ public class GerirClientes {
     Cliente cadastrarCliente() {
         System.out.print("Digite o nome do cliente: ");
            String nome = scanner.nextLine();
-        System.out.print("Digite o NIF do cliente: ");
+        
+           System.out.print("Digite o NIF do cliente: ");
             int nif = Integer.parseInt(scanner.nextLine());
         System.out.print("Digite o telefone do cliente: ");
             int telefone = Integer.parseInt(scanner.nextLine());
+
         System.out.print("Digite a morada do cliente: ");
             String morada = scanner.nextLine();
         System.out.print("Digite a data de nascimento do cliente (dd/MM/yyyy): ");
