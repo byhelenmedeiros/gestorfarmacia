@@ -56,7 +56,7 @@ public class GerirMedicamentos {
     }
 
     private void mostrarMenu() {
-        System.out.println("------ Submenu Medicamentos ------");
+        System.out.println("------ GERIR MEDICAMENTOS ------");
         System.out.println("1. Cadastrar Medicamento");
         System.out.println("2. Mostrar Todos os Medicamentos");
         System.out.println("3. Realizar Venda");
@@ -72,10 +72,10 @@ public class GerirMedicamentos {
                 if (opcao >= 0 && opcao <= 4) {
                     return opcao;
                 } else {
-                    System.out.println("Op��o inv�lida. Escolha novamente.");
+                    System.out.println("OPCAO INVALIDA  Escolha novamente.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Por favor, insira um n�mero v�lido.");
+                System.out.println("Por favor, insira um numero valido.");
             }
         }
     }
@@ -103,7 +103,7 @@ public class GerirMedicamentos {
             listaMedicamentos.add(novoMedicamento);
 
             System.out.println("Medicamento cadastrado com sucesso! Deseja cadastrar outro medicamento?");
-            System.out.println("1 - N�o");
+            System.out.println("1 - Nao");
             System.out.println("2 - Sim, continuar cadastro de medicamentos");
             System.out.println("3 - Voltar para menu principal");
 
@@ -120,7 +120,7 @@ public class GerirMedicamentos {
                     menuController.exibirMenuPrincipal(); // Chama o menu principal
                     return;
                 default:
-                    System.out.println("Escolha inv�lida, encerrando cadastro de medicamentos!");
+                    System.out.println("Escolha invvlida, encerrando cadastro de medicamentos!");
                     continuarCadastro = false;
                     break;
             }
