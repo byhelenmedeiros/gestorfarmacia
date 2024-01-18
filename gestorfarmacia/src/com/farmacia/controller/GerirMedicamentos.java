@@ -60,9 +60,9 @@ public class GerirMedicamentos {
         System.out.println("1. Cadastrar Medicamento");
         System.out.println("2. Mostrar Todos os Medicamentos");
         System.out.println("3. Realizar Venda");
-        System.out.println("4. Gerar Relat�rio");
+        System.out.println("4. Gerar Relatorio");
         System.out.println("0. Voltar para o Menu Principal");
-        System.out.print("Escolha uma op��o: ");
+        System.out.print("Escolha uma opcao: ");
     }
 
     private int receberOpcaoSubMenu() {
